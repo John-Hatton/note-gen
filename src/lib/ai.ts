@@ -336,6 +336,7 @@ async function prepareMessages(text: string, includeLanguage = false): Promise<{
         rawLang = labelToCode[rawLang]
       } catch (e) {
         // ignore save errors; we'll continue with the raw value
+        console.error('Failed to migrate chatLanguage label to code:', e)
       }
     }
 
