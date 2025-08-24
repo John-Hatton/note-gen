@@ -144,10 +144,6 @@ export function GithubSync() {
       {
         syncRepoInfo &&
         <>
-        /* 
-        自动同步
-        EN: Auto-sync
-        */
           <SettingPanel title={t('settings.sync.autoSyncTitle') || '自动同步'} desc={t('settings.sync.autoSyncDesc') || '选择编辑器在输入停止后自动同步的时间间隔'}>
             <Select
               value={autoSync}
