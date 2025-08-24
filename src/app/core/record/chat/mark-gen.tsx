@@ -30,6 +30,7 @@ import dayjs, { Dayjs } from "dayjs"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useTranslations } from "next-intl"
+import normalizeLanguageForModel from '@/lib/language'
 
 interface MarkGenProps {
   inputValue?: string;
@@ -172,7 +173,7 @@ export const MarkGen = forwardRef<{ openGen: () => void }, MarkGenProps>(({ inpu
       ${inputValue ? '满足需求：'+inputValue : ''}
       如果记录内容为空，则返回本次整理中不存在任何记录信息。
       满足以下格式要求：
-      - 使用 ${locale} 语言。
+  - 使用 ${normalizeLanguageForModel(locale)} 语言。
       - 使用 Markdown 语法。
       - 确保存在一级标题。
       - 笔记顺序可能是错误的，要按照正确顺序排列。

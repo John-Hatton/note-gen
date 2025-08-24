@@ -24,25 +24,25 @@ import { TooltipButton } from "@/components/tooltip-button"
 import useChatStore from "@/stores/chat"
 
 const languageOptions = [
-  "English",
-  "中文",
-  "日本語",
-  "한국어",
-  "Français",
-  "Deutsch",
-  "Español",
-  "Русский",
+  { id: 'en', label: 'English' },
+  { id: 'zh', label: '中文' },
+  { id: 'ja', label: '日本語' },
+  { id: 'ko', label: '한국어' },
+  { id: 'fr', label: 'Français' },
+  { id: 'de', label: 'Deutsch' },
+  { id: 'es', label: 'Español' },
+  { id: 'ru', label: 'Русский' },
 ]
 
 export function ChatLanguage() {
   const [open, setOpen] = React.useState(false)
   const t = useTranslations('record.chat.input')
-  const [chatLanguage, setChatLanguage] = useState<string>('中文')
+  const [chatLanguage, setChatLanguage] = useState<string>('zh')
   const { setLocale } = useChatStore()
   
   function getCurrentLanguageName() {
-    const lang = languageOptions.find(l => l === chatLanguage)
-    return lang ? lang : 'English'
+    const lang = languageOptions.find(l => l.id === chatLanguage)
+    return lang ? lang.label : 'English'
   }
 
   async function initChatLanguage() {
@@ -53,7 +53,7 @@ export function ChatLanguage() {
         setChatLanguage(savedLanguage)
         setLocale(savedLanguage)
       } else {
-        const appLocale = await store.get<string>('locale') || '中文'
+        const appLocale = await store.get<string>('locale') || 'zh'
         setChatLanguage(appLocale)
         setLocale(appLocale)
         await store.set('chatLanguage', appLocale)
@@ -105,18 +105,18 @@ export function ChatLanguage() {
             <CommandGroup>
               {languageOptions.map((lang) => (
                 <CommandItem
-                  key={lang}
-                  value={lang}
+                  key={lang.id}
+                  value={lang.id}
                   onSelect={(currentValue) => {
                     languageSelectChangeHandler(currentValue)
                     setOpen(false)
                   }}
                 >
-                  {lang}
+                  {lang.label}
                   <Check
                     className={cn(
                       "ml-auto",
-                      chatLanguage === lang ? "opacity-100" : "opacity-0"
+                      chatLanguage === lang.id ? "opacity-100" : "opacity-0"
                     )}
                   />
                 </CommandItem>

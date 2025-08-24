@@ -5,6 +5,7 @@ import useChatStore from "@/stores/chat"
 import useTagStore from "@/stores/tag"
 import useMarkStore from "@/stores/mark"
 import { fetchAiStream } from "@/lib/ai"
+import normalizeLanguageForModel from '@/lib/language'
 import { TooltipButton } from "@/components/tooltip-button"
 import { useImperativeHandle, forwardRef, useRef } from "react"
 import { useTranslations } from "next-intl"
@@ -89,7 +90,7 @@ ${ragContext}
     }
 
     const request_content = `
-      Use ${locale} language, don't use any other language.
+      Use ${normalizeLanguageForModel(locale)} language, don't use any other language.
       ${[...scanMarks, ...textMarks, ...imageMarks, ...fileMarks, ...linkMarks].length ? 'You can refer to the following content notes:' : ''}
       ${scanMarks.length ? 'The following are screenshots after using OCR to identify text fragments:' : ''}
       ${scanMarks.map((item, index) => `${index + 1}. ${item.content}`).join(';\n\n')}

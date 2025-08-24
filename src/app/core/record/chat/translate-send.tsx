@@ -52,10 +52,13 @@ export const TranslateSend = forwardRef<{ sendTranslate: () => void }, Translate
 
     // 获取目标语言
     const store = await Store.load('store.json')
-    const targetLanguage = await store.get<string>('chatLanguage') || '中文'
+  const rawTargetLanguage = await store.get<string>('chatLanguage') || 'zh'
+  // Normalize stored codes/labels to a language name models understand
+  const { default: normalizeLanguageForModel } = await import('@/lib/language')
+  const targetLanguage = normalizeLanguageForModel(rawTargetLanguage)
 
-    // 翻译请求内容
-    const request_content = `Please translate the following text to ${targetLanguage}. Only return the translated text, no explanations or additional content:\n\n${inputValue.trim()}`
+  // 翻译请求内容
+  const request_content = `Please translate the following text to ${targetLanguage}. Only return the translated text, no explanations or additional content:\n\n${inputValue.trim()}`
 
     // 先保存空消息，然后通过流式请求更新
     await saveChat({

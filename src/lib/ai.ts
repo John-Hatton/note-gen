@@ -3,6 +3,7 @@ import { Store } from "@tauri-apps/plugin-store";
 import OpenAI from 'openai';
 import { AiConfig } from "@/app/core/setting/config";
 import { fetch } from "@tauri-apps/plugin-http";
+import normalizeLanguageForModel from '@/lib/language'
 
 /**
  * 获取当前的prompt内容
@@ -311,7 +312,43 @@ async function prepareMessages(text: string, includeLanguage = false): Promise<{
   
   if (includeLanguage) {
     const store = await Store.load('store.json')
-    const chatLanguage = await store.get<string>('chatLanguage') || 'en'
+    let rawLang = await store.get<string>('chatLanguage') || 'en'
+
+    // Migration: if older installs saved a display label (e.g. '中文' or '简体中文'),
+    // convert it to a canonical language code and persist that so future reads are consistent.
+    const labelToCode: Record<string, string> = {
+      '中文': 'zh',
+      '简体中文': 'zh',
+      'English': 'en',
+      '日本語': 'ja',
+      '한국어': 'ko',
+      'Français': 'fr',
+      'Deutsch': 'de',
+      'Español': 'es',
+      'Русский': 'ru'
+    }
+
+    const looksLikeCode = /^[a-z]{2}(-[A-Za-z0-9]+)?$/i.test(rawLang)
+    if (!looksLikeCode && labelToCode[rawLang]) {
+      try {
+        await store.set('chatLanguage', labelToCode[rawLang])
+        await store.save()
+        rawLang = labelToCode[rawLang]
+      } catch (e) {
+        // ignore save errors; we'll continue with the raw value
+      }
+    }
+
+    // Use the shared normalizer so any display name or code (e.g. "中文", "zh-CN")
+    // is converted to a canonical English language name the model understands (e.g. "Chinese").
+    const chatLanguage = normalizeLanguageForModel(rawLang)
+
+    // Debug: show what we read and what we normalized to (visible in console during dev)
+    try {
+      // eslint-disable-next-line no-console
+      console.debug('[ai] prepareMessages language -> raw:', rawLang, 'normalized:', chatLanguage)
+    } catch {}
+
     promptContent += '\n\n' + `Use **${chatLanguage}** to answer.`
   }
   
@@ -598,7 +635,9 @@ export async function fetchAiTranslate(text: string, targetLanguage: string): Pr
     const aiConfig = await getAISettings('translatePrimaryModel')
     
     // 构建翻译提示词
-    const translationPrompt = `Translate the following text to ${targetLanguage}. Maintain the original formatting, markdown syntax, and structure:`
+  // Normalize the target language so labels like '中文' or codes like 'zh' become 'Chinese', etc.
+  const normalizedTarget = normalizeLanguageForModel(targetLanguage)
+  const translationPrompt = `Translate the following text to ${normalizedTarget}. Maintain the original formatting, markdown syntax, and structure:`
     
     // 准备消息
     const { messages } = await prepareMessages(`${translationPrompt}\n\n${text}`, false)
