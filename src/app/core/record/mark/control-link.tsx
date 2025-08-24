@@ -56,7 +56,7 @@ export function ControlLink() {
       });
       
       if (!response.ok) {
-        throw new Error(`HTTP 错误: ${response.status}`);
+        throw new Error(`${t('errors.httpError') || 'HTTP Error'}: ${response.status}`);
       }
       
       setQueue(queueId, { progress: '60%' });
@@ -155,7 +155,7 @@ export function ControlLink() {
         });
       } catch (error) {
         resolve({ 
-          error: `解析 HTML 内容失败: ${error}`,
+          error: `${t('errors.parseHtmlFailed') || 'Failed to parse HTML content'}: ${error}`,
           title: new URL(url).hostname,
           metaDesc: '',
           mainContent: '',

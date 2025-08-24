@@ -23,10 +23,10 @@ export function SettingDev({id, icon}: {id: string, icon?: React.ReactNode}) {
     if (res) {
       const store = await Store.load('store.json');
       await store.clear()
-      await remove('store.json', { baseDir: BaseDirectory.AppData })
       await remove('note.db', { baseDir: BaseDirectory.AppData })
-      message('数据已清理，请重启应用', {
-        title: '重启应用',
+      // EN: Inform user data cleared and app will restart
+      message(t('settings.dev.dataClearedMessage') || '数据已清理，请重启应用', {
+        title: t('settings.dev.restartTitle') || '重启应用',
         kind: 'info',
       }).then(async () => {
         await getCurrentWindow().close();
@@ -39,7 +39,7 @@ export function SettingDev({id, icon}: {id: string, icon?: React.ReactNode}) {
       title: '清理文件',
       kind: 'warning',
     })
-    if (res) {
+  if (res) {
       const folders = ['screenshot', 'article', 'clipboard', 'image']
       for (const folder of folders) {
         const isFolderExists = await exists(folder, { baseDir: BaseDirectory.AppData})
@@ -48,6 +48,7 @@ export function SettingDev({id, icon}: {id: string, icon?: React.ReactNode}) {
         }
       }
       toast({ title: '文件已清理' })
+  toast({ title: t('settings.dev.filesCleared') || '文件已清理' })
     }
   }
 
@@ -75,12 +76,12 @@ export function SettingDev({id, icon}: {id: string, icon?: React.ReactNode}) {
         <Input className="max-w-[400px]" placeholder={t('settings.dev.proxyPlaceholder')} value={proxy} onChange={proxyChangeHandler} />
       </SettingRow>
       <SettingRow border className="gap-4 flex-col md:flex-row items-start md:items-center">
-        <span>清理数据信息，包括系统配置信息、数据库（包含记录）。</span>
-        <Button variant={"destructive"} onClick={handleClearData}>清理</Button>
+        <span>{t('settings.dev.clearDataDesc') || 'Clear persisted settings and database (including records).'} </span>
+        <Button variant={"destructive"} onClick={handleClearData}>{t('settings.dev.clearDataButton') || 'Clear'}</Button>
       </SettingRow>
       <SettingRow border className="gap-4 flex-col md:flex-row items-start md:items-center">
-        <span>清理文件，包括图片、文章。</span>
-        <Button variant={"destructive"} onClick={handleClearFile}>清理</Button>
+        <span>{t('settings.dev.clearFilesDesc') || 'Clear persisted files, including images and articles.'}</span>
+        <Button variant={"destructive"} onClick={handleClearFile}>{t('settings.dev.clearFilesButton') || 'Clear'}</Button>
       </SettingRow>
       <SetConfig />
     </SettingType>

@@ -28,11 +28,13 @@ export function SettingTab() {
     setCurrentPage(anchor)
     router.push(`/core/setting/${anchor}`)
     // 记录最后访问的设置页面
+    // EN: Record the last visited settings page
     setLastSettingPage(anchor)
   }
 
   useEffect(() => {
-    // 从当前URL路径中提取当前页面
+  // 从当前URL路径中提取当前页面
+  // EN: Derive current page from the current URL path
     const pageName = pathname.split('/').pop()
     if (pageName && pageName !== 'setting') {
       setCurrentPage(pageName)

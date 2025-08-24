@@ -43,12 +43,18 @@ export function GiteeSync() {
   async function checkRepoState() {
     try {
       // 设置检测中状态
+        // 设置检测中状态
+        // EN: Set to checking state
       setGiteeSyncRepoState(SyncStateEnum.checking);
       
       // 先获取用户信息，确保有用户名
+        // 先获取用户信息，确保有用户名
+        // EN: First fetch user info to ensure username exists
       await getUserInfo();
       
       // 检查同步仓库
+        // 检查同步仓库
+        // EN: Check sync repository
       const syncRepo = await checkSyncRepoState(RepoNames.sync);
       if (syncRepo) {
         setGiteeSyncRepoInfo(syncRepo);
@@ -65,11 +71,13 @@ export function GiteeSync() {
       }
     } catch (error) {
       // 失败时将状态设置为不可用
+        // 失败时将状态设置为不可用
+        // EN: On failure set status to unavailable
       setGiteeSyncRepoState(SyncStateEnum.fail);
       setGiteeSyncRepoInfo(undefined);
       
       toast({
-        title: '检查仓库状态失败',
+    title: '检查仓库状态失败 | Check repo status failed',
         description: (error as any).message,
         variant: 'destructive',
       });
@@ -83,6 +91,8 @@ export function GiteeSync() {
       setGiteeSyncRepoInfo(undefined)
     } else {
       // 有新的令牌值，但还未验证时先显示检测中状态
+        // 有新的令牌值，但还未验证时先显示检测中状态
+        // EN: If there's a new token but not yet verified, show checking state first
       setGiteeSyncRepoState(SyncStateEnum.checking)
     }
     setGiteeAccessToken(value)
@@ -90,6 +100,8 @@ export function GiteeSync() {
     await store.set('giteeAccessToken', value)
     
     // 如果有令牌，尝试检查仓库状态
+      // 如果有令牌，尝试检查仓库状态
+      // EN: If a token exists, attempt to check repository status
     if (value) {
       checkRepoState();
     }
@@ -102,6 +114,8 @@ export function GiteeSync() {
       if (token) {
         setGiteeAccessToken(token)
         // 初始化时检查仓库状态
+          // 初始化时检查仓库状态
+          // EN: Check repository state during initialization
         checkRepoState();
       } else {
         setGiteeAccessToken('')

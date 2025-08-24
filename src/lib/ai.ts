@@ -341,6 +341,9 @@ async function prepareMessages(text: string, includeLanguage = false): Promise<{
 
     // Use the shared normalizer so any display name or code (e.g. "中文", "zh-CN")
     // is converted to a canonical English language name the model understands (e.g. "Chinese").
+    // Ensure we always insert an English language name into the system prompt.
+    // normalizeLanguageForModel will convert display labels (e.g. '中文') and
+    // codes (e.g. 'zh-CN') to canonical English names (e.g. 'Chinese').
     const chatLanguage = normalizeLanguageForModel(rawLang)
 
     // Debug: show what we read and what we normalized to (visible in console during dev)
@@ -349,7 +352,10 @@ async function prepareMessages(text: string, includeLanguage = false): Promise<{
       console.debug('[ai] prepareMessages language -> raw:', rawLang, 'normalized:', chatLanguage)
     } catch {}
 
-    promptContent += '\n\n' + `Use **${chatLanguage}** to answer.`
+    // Use a plain-English instruction to the model. Avoid embedding non-ASCII
+    // characters or markdown emphasis which may be stored as user-provided values
+    // and cause localized text (e.g. '中文') to appear in the system prompt.
+    promptContent += '\n\n' + `Answer in ${chatLanguage}.`
   }
   
   // 定义消息数组

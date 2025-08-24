@@ -9,6 +9,7 @@ import { fetch } from "@tauri-apps/plugin-http"
 import { useTranslations } from 'next-intl'
 
 // 检测当前 AI 的可用性
+// EN: Check availability of the configured AI
 export function AiCheck() {
   const [state, setState] = useState<'ok' | 'error' | 'checking' | 'init'>('init')
   const { currentAi, aiModelList } = useSettingStore()
@@ -57,12 +58,12 @@ export function AiCheck() {
             })
           });
           if (!response.ok) {
-            throw new Error(`重排序请求失败: ${response.status} ${response.statusText}`);
+            throw new Error(`重排序请求失败: ${response.status} ${response.statusText} | Rerank request failed`);
           }
           
           const rerankData = await response.json();
           if (!rerankData || !rerankData.results) {
-            throw new Error('重排序结果格式不正确');
+            throw new Error('重排序结果格式不正确 | Rerank result format invalid');
           }
           return true
         // 嵌入模型测试

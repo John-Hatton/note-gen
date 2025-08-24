@@ -85,11 +85,11 @@ export default function Translation({editor}: {editor?: Vditor}) {
         <DropdownMenuGroup>
           {
             locales.map(item => (
-              <DropdownMenuItem key={item} onClick={(e) => {
+              <DropdownMenuItem key={item.id} onClick={(e) => {
                 e.preventDefault()
-                handleBlock(item)
+                handleBlock(item.id)
               }}>
-                {item}
+                {item.label}
               </DropdownMenuItem>
             ))
           }

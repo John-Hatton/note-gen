@@ -43,6 +43,7 @@ export function GithubImageHosting() {
   } = useImageStore()
 
   // 检查 GitHub 仓库状态
+  // EN: Check GitHub repository status
   async function checkGithubRepos() {
     try {
       setImageRepoState(SyncStateEnum.checking)

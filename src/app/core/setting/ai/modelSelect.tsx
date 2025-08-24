@@ -31,6 +31,7 @@ export default function ModelSelect(
   const currentRequestIdRef = useRef<number>(0)
   
   // 检查输入的模型是否存在于列表中
+  // EN: Check whether the input model exists in the fetched list
   const modelExists = (value: string) => {
     return list.some(item => item.id.toLowerCase() === value.toLowerCase());
   }
@@ -55,6 +56,7 @@ export default function ModelSelect(
   }
 
   // 获取模型列表
+  // EN: Fetch the model list
   async function getModels(model: AiConfig, requestId: number) {
     try {
       setLoading(true)
@@ -120,6 +122,7 @@ export default function ModelSelect(
   }, [])
 
   // 只在初始化和模型变化时设置输入值
+  // EN: Only set input value during init or when model changes
   useEffect(() => {
     if (model) {
       setInputValue(model)

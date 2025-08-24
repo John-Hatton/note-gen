@@ -28,7 +28,8 @@ export function SettingTemplate({id, icon}: {id: string, icon?: React.ReactNode}
   const [templateStatus, setTemplateStatus] = useState(true);
 
   function createTemplateHandler() {
-    const newTemplate: GenTemplate = {
+  // EN: Create a new template object
+  const newTemplate: GenTemplate = {
       id: `${templateList.length + 1}`,
       status: templateStatus,
       title: templateTitle || t('settings.template.customTemplate'),
@@ -62,7 +63,8 @@ export function SettingTemplate({id, icon}: {id: string, icon?: React.ReactNode}
   }
 
   function deleteTemplateHandler(id: string) {
-    confirm(t('settings.template.deleteConfirm')).then(async (res) => {
+  // EN: Confirm deletion
+  confirm(t('settings.template.deleteConfirm')).then(async (res) => {
       if (res) {
         setTemplateList(templateList.filter(item => item.id !== id));
       }

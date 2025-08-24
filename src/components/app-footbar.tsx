@@ -43,12 +43,14 @@ export function AppFootbar() {
   const t = useTranslations()
   
   // 检查是否有 GitHub 或 Gitee 账号，用于显示头像
+  // EN: Check for GitHub or Gitee account to display avatar
   const hasGithubAccount = Boolean(githubUsername && accessToken)
   const hasGiteeAccount = Boolean(giteeAccessToken)
   const hasGitlabAccount = Boolean(gitlabAccessToken)
   const showAvatar = hasGithubAccount || hasGiteeAccount
 
   // 获取当前主要备份方式的用户信息
+  // EN: Obtain user info for the current primary backup method
   async function handleGetUserInfo() {
     try {
       if (primaryBackupMethod === 'github') {
@@ -64,6 +66,7 @@ export function AppFootbar() {
       } else if (primaryBackupMethod === 'gitee') {
         if (giteeAccessToken) {
           // 获取 Gitee 用户信息
+          // EN: Fetch Gitee user information
           setGiteeSyncRepoInfo(undefined)
           setGiteeSyncRepoState(SyncStateEnum.checking)
           const res = await import('@/lib/gitee').then(module => module.getUserInfo())
@@ -74,6 +77,7 @@ export function AppFootbar() {
       } else if (primaryBackupMethod === 'gitlab') {
         if (gitlabAccessToken) {
           // 获取 Gitlab 用户信息
+          // EN: Fetch GitLab user information
           setGitlabSyncProjectInfo(undefined)
           setGitlabSyncProjectState(SyncStateEnum.checking)
           const { getUserInfo } = await import('@/lib/gitlab')
@@ -94,6 +98,7 @@ export function AppFootbar() {
   }
   
   // 确定使用哪个账号用于头像显示
+  // EN: Determine which account to use for avatar display
   const username = primaryBackupMethod === 'github' && hasGithubAccount 
     ? githubUsername 
     : primaryBackupMethod === 'gitee' && hasGiteeAccount
@@ -103,6 +108,7 @@ export function AppFootbar() {
     : ''
     
   // 底部导航菜单项
+  // EN: Bottom navigation menu items
   const items = [
     {
       title: t('navigation.chat'),
@@ -127,6 +133,7 @@ export function AppFootbar() {
   ]
 
   // 处理导航点击事件
+  // EN: Handle navigation click events
   async function menuHandler(item: typeof items[0]) {
     if (pathname === '/core/article' && item.url === '/core/article') {
       toggleFileSidebar()
@@ -158,6 +165,7 @@ export function AppFootbar() {
             )}
           >
             {/* 最后一项可能显示头像 */}
+            {/* EN: The last item may display the avatar */}
             {index === items.length - 1 && showAvatar && username ? (
               <div className="flex flex-col items-center">
                 <Avatar className="h-6 w-6">

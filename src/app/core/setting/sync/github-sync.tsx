@@ -39,11 +39,12 @@ export function GithubSync() {
   const [accessTokenVisible, setAccessTokenVisible] = useState<boolean>(false)
 
   // 检查 GitHub 仓库状态
+  // EN: Check GitHub repository status
   async function checkGithubRepos() {
     try {
       setSyncRepoState(SyncStateEnum.checking)
       await getUserInfo();
-      // 检查同步仓库状态
+  // EN: Check sync repository status
       const syncRepo = await checkSyncRepoState(RepoNames.sync)
       if (syncRepo) {
         setSyncRepoInfo(syncRepo)
@@ -143,7 +144,10 @@ export function GithubSync() {
       {
         syncRepoInfo &&
         <>
-          <SettingPanel title="自动同步" desc="选择编辑器在输入停止后自动同步的时间间隔">
+  // 自动同步
+  // EN: Auto-sync
+        // EN: Auto-sync
+          <SettingPanel title={t('settings.sync.autoSyncTitle') || '自动同步'} desc={t('settings.sync.autoSyncDesc') || '选择编辑器在输入停止后自动同步的时间间隔'}>
             <Select
               value={autoSync}
               onValueChange={(value) => setAutoSync(value)}

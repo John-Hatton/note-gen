@@ -96,51 +96,52 @@ export default function ShortcutsInput({
     init()
   }, [shorcut, isFocus])
 
-  return <div className="flex items-center gap-2">
-    <div
-      onClick={handleSetFocus}
-      ref={inputRef}
-      className={`
-        flex-1
-        px-2
-        py-1
-        flex
-        rounded-md
-        items-center
-        cursor-pointer
-        border
-        h-9
-        ${isFocus ? 'border-primary' : 'border-transparent'}
-      `}
-    >
-      {
-        keyGroup.length ? keyGroup?.map((key, index) => {
-          if (index < keyGroup.length - 1) {
-            return (
-              <div key={index} className="flex items-center">
-                <Badge variant="secondary" className="h-6">{transformKey(key)}</Badge>
-                <span className="px-1 text-xs">+</span>
-              </div>
-            )
-          } else {
+  return (
+    <div className="flex items-center gap-2">
+      <div
+        onClick={handleSetFocus}
+        ref={inputRef}
+        className={`
+          flex-1
+          px-2
+          py-1
+          flex
+          rounded-md
+          items-center
+          cursor-pointer
+          border
+          h-9
+          ${isFocus ? 'border-primary' : 'border-transparent'}
+        `}
+      >
+        {
+          keyGroup.length ? keyGroup.map((key, index) => {
+            if (index < keyGroup.length - 1) {
+              return (
+                <div key={index} className="flex items-center">
+                  <Badge variant="secondary" className="h-6">{transformKey(key)}</Badge>
+                  <span className="px-1 text-xs">+</span>
+                </div>
+              )
+            }
             return <div className="flex items-center" key={index}><Badge variant="secondary" className="h-6">{transformKey(key)}</Badge></div>
-          }
-        }) : <Badge variant="secondary" className="h-6">{t('noShortcut')}</Badge>
-      }
+          }) : <Badge variant="secondary" className="h-6">{t('noShortcut')}</Badge>
+        }
+      </div>
+      <TooltipButton
+        size="icon"
+        variant="ghost"
+        tooltipText={t('resetDefaults')}
+        onClick={handleResetDefault}
+        icon={<RotateCcw />}
+      />
+      <TooltipButton
+        size="icon"
+        variant="destructive"
+        tooltipText={t('clear')}
+        onClick={handleClear}
+        icon={<TrashIcon />}
+      />
     </div>
-    <TooltipButton
-      size="icon"
-      variant="ghost"
-      tooltipText={t('resetDefaults')}
-      onClick={handleResetDefault}
-      icon={<RotateCcw />}
-    />
-    <TooltipButton
-      size="icon"
-      variant="destructive"
-      tooltipText={t('clear')}
-      onClick={handleClear}
-      icon={<TrashIcon />}
-    />
-  </div>
+  )
 }

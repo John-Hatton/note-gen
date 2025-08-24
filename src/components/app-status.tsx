@@ -30,6 +30,7 @@ export default function AppStatus() {
   } = useSyncStore()
 
   // 获取当前主要备份方式的用户信息
+  // EN: Obtain user info for the current primary backup method
   async function handleGetUserInfo() {
     try {
       if (primaryBackupMethod === 'github') {
@@ -46,6 +47,7 @@ export default function AppStatus() {
       } else if (primaryBackupMethod === 'gitee') {
         if (giteeAccessToken) {
           // 获取 Gitee 用户信息
+          // EN: Fetch Gitee user information
           setGiteeSyncRepoInfo(undefined)
           setGiteeSyncRepoState(SyncStateEnum.checking)
           const res = await import('@/lib/gitee').then(module => module.getUserInfo())
@@ -57,6 +59,7 @@ export default function AppStatus() {
       } else if (primaryBackupMethod === 'gitlab') {
         if (gitlabAccessToken) {
           // 获取 Gitlab 用户信息
+          // EN: Fetch GitLab user information
           setGitlabSyncProjectInfo(undefined)
           setGitlabSyncProjectState(SyncStateEnum.checking)
           const { getUserInfo } = await import('@/lib/gitlab')
@@ -78,9 +81,11 @@ export default function AppStatus() {
   }
 
   // 检查 GitHub 仓库状态
+  // EN: Check GitHub repository status
   async function checkGithubRepos() {
     try {
-      // 检查同步仓库状态
+  // 检查同步仓库状态
+  // EN: Check sync repository status
       const syncRepo = await checkSyncRepoState(RepoNames.sync)
       if (syncRepo) {
         setSyncRepoInfo(syncRepo)
@@ -102,19 +107,23 @@ export default function AppStatus() {
   }
   
   // 检查 Gitlab 项目状态
+  // EN: Check GitLab project status
   async function checkGitlabProjects() {
     try {
       const { checkSyncProjectState, createSyncProject } = await import('@/lib/gitlab')
       
-      // 检查同步项目状态
+  // 检查同步项目状态
+  // EN: Check sync project status
       const syncProject = await checkSyncProjectState(RepoNames.sync)
       if (syncProject) {
         setGitlabSyncProjectInfo(syncProject)
         setGitlabSyncProjectState(SyncStateEnum.success)
       } else {
-        // 项目不存在，尝试创建
+  // 项目不存在，尝试创建
+  // EN: Project does not exist; attempt to create it
         setGitlabSyncProjectState(SyncStateEnum.creating)
-        const info = await createSyncProject(RepoNames.sync, true) // 默认创建私有项目
+  const info = await createSyncProject(RepoNames.sync, true) // 默认创建私有项目
+  // EN: Default to creating a private project
         if (info) {
           setGitlabSyncProjectInfo(info)
           setGitlabSyncProjectState(SyncStateEnum.success)
@@ -129,19 +138,23 @@ export default function AppStatus() {
   }
   
   // 检查 Gitee 仓库状态
+  // EN: Check Gitee repository status
   async function checkGiteeRepos() {
     try {
       const { checkSyncRepoState, createSyncRepo } = await import('@/lib/gitee')
       
-      // 检查同步仓库状态
+  // 检查同步仓库状态
+  // EN: Check sync repository status
       const syncRepo = await checkSyncRepoState(RepoNames.sync)
       if (syncRepo) {
         setGiteeSyncRepoInfo(syncRepo)
         setGiteeSyncRepoState(SyncStateEnum.success)
       } else {
-        // 仓库不存在，尝试创建
+  // 仓库不存在，尝试创建
+  // EN: Repository does not exist; attempt to create it
         setGiteeSyncRepoState(SyncStateEnum.creating)
-        const info = await createSyncRepo(RepoNames.sync, true) // 默认创建私有仓库
+  const info = await createSyncRepo(RepoNames.sync, true) // 默认创建私有仓库
+  // EN: Default to creating a private repository
         if (info) {
           setGiteeSyncRepoInfo(info)
           setGiteeSyncRepoState(SyncStateEnum.success)
@@ -169,6 +182,7 @@ export default function AppStatus() {
   }
 
   // 监听 token 变化，获取用户信息
+  // EN: Listen for token changes and fetch user information
   useEffect(() => {
     if (accessToken || giteeAccessToken || gitlabAccessToken) {
       handleGetUserInfo()

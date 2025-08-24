@@ -31,19 +31,22 @@ export function SettingPrompt({id, icon}: {id: string, icon?: React.ReactNode}) 
   }, [])
 
   // 添加新prompt
+  // EN: Add a new prompt
   const handleAddPrompt = async () => {
     if (!newTitle.trim()) return
     await addPrompt({
       title: newTitle,
       content: newContent
     })
-    // 清空表单
+  // 清空表单
+  // EN: Clear the form
     setNewTitle('')
     setNewContent('')
     setDialogOpen(false)
   }
 
   // 保存编辑中的prompt
+  // EN: Save the prompt being edited
   const handleSaveEdit = async (id: string) => {
     const prompt = promptList.find(p => p.id === id)
     if (!prompt) return
@@ -58,11 +61,13 @@ export function SettingPrompt({id, icon}: {id: string, icon?: React.ReactNode}) 
   }
 
   // 取消编辑
+  // EN: Cancel edit
   const handleCancelEdit = () => {
     setEditingId(null)
   }
 
   // 开始编辑
+  // EN: Start editing
   const handleStartEdit = (prompt: Prompt) => {
     setEditingId(prompt.id)
     setNewTitle(prompt.title)
@@ -70,11 +75,13 @@ export function SettingPrompt({id, icon}: {id: string, icon?: React.ReactNode}) 
   }
 
   // 删除prompt
+  // EN: Delete a prompt
   const handleDeletePrompt = async (id: string) => {
     await deletePrompt(id)
   }
 
   // 优化提示词
+  // EN: Optimize prompt text (call AI)
   const handleOptimizePrompt = async () => {
     if (!newContent.trim()) {
       toast({
@@ -86,7 +93,8 @@ export function SettingPrompt({id, icon}: {id: string, icon?: React.ReactNode}) 
 
     setIsOptimizing(true)
     try {
-      const optimizationPrompt = `
+  // EN: The AI optimization prompt uses currentLocale; ensure currentLocale is a code or normalized value to avoid injecting localized labels into model prompts.
+  const optimizationPrompt = `
       Please optimize the following prompt, use ${currentLocale} language, making it clearer, more specific, and more effective. 
       Maintain the original meaning while improving expression, adding necessary context, optimizing structure and logic. 
       Please directly return the optimized prompt content, without adding any additional explanation:
@@ -116,6 +124,7 @@ ${newContent}`
   }
 
   // 打开新增对话框
+  // EN: Open add dialog
   const handleOpenAddDialog = () => {
     setNewTitle('')
     setNewContent('')

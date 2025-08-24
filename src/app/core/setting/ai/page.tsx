@@ -60,12 +60,14 @@ export default function AiPage() {
   }
 
   // 通过本地存储查询当前的模型配置
+  // EN: Read current model config from local store
   async function getModelByStore(key: string) {
     const model = aiModelList.find(item => item.key === key)
     return model
   }
 
   // 模型配置选择变更
+  // EN: Model configuration selection changed
   async function modelConfigSelectChange(key: string) {
     const store = await Store.load('store.json');
     const models = await store.get<AiConfig[]>('aiModelList')
@@ -86,6 +88,7 @@ export default function AiPage() {
   }
 
   // 数据变化保存
+  // EN: Persist data changes
   async function valueChangeHandler<K extends keyof AiConfig>(key: K, value: AiConfig[K]) {
     switch (key) {
       case 'title':

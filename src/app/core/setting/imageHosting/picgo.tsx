@@ -56,6 +56,7 @@ export default function PicgoImageHosting() {
     }
   }, [])
 
+  // EN: PicGo status and config
   return <div>
     <SettingRow className="mb-4"> 
       <Alert variant={picgoState ? 'default' : 'destructive'}>

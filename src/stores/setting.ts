@@ -179,7 +179,8 @@ const useSettingStore = create<SettingState>((set, get) => ({
   autoUpdate: true,
   setAutoUpdate: (autoUpdate) => set({ autoUpdate }),
 
-  language: '简体中文',
+  // store language as a language code (e.g. 'zh', 'en')
+  language: 'zh',
   setLanguage: (language) => set({ language }),
 
   currentAi: '',

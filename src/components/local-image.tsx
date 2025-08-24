@@ -20,6 +20,7 @@ export function LocalImage({ onLoad, src, ...props }: React.ComponentProps<typeo
   }, [src])
 
   // 如果 loaclSrc 存在
+  // EN: If localSrc exists
   return (
     localSrc ?
     <Image onLoad={onLoad} src={localSrc} alt="" width={0} height={0} className={props.className} style={props.style} /> :

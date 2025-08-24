@@ -34,6 +34,7 @@ export default function CreateConfig() {
   }
 
   // 添加自定义模型
+  // EN: Add custom model
   async function addCustomModelHandler(model: AiConfig) {
     const store = await Store.load('store.json');
     let aiModelList = await store.get<AiConfig[]>('aiModelList')

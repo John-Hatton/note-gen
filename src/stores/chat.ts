@@ -102,10 +102,11 @@ const useChatStore = create<ChatState>((set, get) => ({
   },
 
 
-  locale: locales[0],
+  // default to first locale id
+  locale: locales[0].id,
   getLocale: async () => {
     const store = await Store.load('store.json');
-    const res = (await store.get<string>('note_locale')) || locales[0]
+    const res = (await store.get<string>('note_locale')) || locales[0].id
     set({ locale: res })
   },
   setLocale: async (locale) => {

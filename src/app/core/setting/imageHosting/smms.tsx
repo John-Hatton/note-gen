@@ -31,15 +31,16 @@ export default function SMMSImageHosting() {
   }
 
   // 外部打开链接
+  // EN: Open external URL
   function openUrl(url?: string) {
     if (url) open(url)
   }
 
-  // 设置 token
-  async function handleSetToken(token: string) {
-    setToken(token)
+  // 设置 token 并保存
+  async function handleSetToken(newToken: string) {
+    setToken(newToken)
     const store = await Store.load('store.json');
-    await store.set('smms', { token })
+    await store.set('smms', { token: newToken })
     await store.save()
   }
 
@@ -86,7 +87,7 @@ export default function SMMSImageHosting() {
     {
       token &&
       <SettingRow>
-        <FormItem title="磁盘使用">
+        <FormItem title={t('smms.diskUsageTitle') || '磁盘使用'}>
           {loading && <LoaderCircle className="animate-spin mr-2" />}
           {!loading && userInfo && <span>{userInfo?.disk_usage} / {userInfo?.disk_limit}</span>}
           {!loading && !userInfo && <span>{t('smms.error')}</span>}

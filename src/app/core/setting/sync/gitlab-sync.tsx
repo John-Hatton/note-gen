@@ -47,11 +47,13 @@ export function GitlabSync() {
   const [gitlabAccessTokenVisible, setGitlabAccessTokenVisible] = useState<boolean>(false)
 
   // 检查 Gitlab 项目状态
+  // EN: Check GitLab project status
   async function checkGitlabProjects() {
     try {
       setGitlabSyncProjectState(SyncStateEnum.checking)
       await getUserInfo();
-      // 检查同步项目状态
+  // 检查同步项目状态
+  // EN: Check sync project status
       const syncProject = await checkSyncProjectState(RepoNames.sync)
       if (syncProject) {
         setGitlabSyncProjectInfo(syncProject)
@@ -73,6 +75,7 @@ export function GitlabSync() {
   }
 
   // Token 变化处理
+  // EN: Handle token changes
   async function tokenChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value
     if (value === '') {
@@ -89,25 +92,30 @@ export function GitlabSync() {
   }
 
   // 实例类型变化处理
+  // EN: Handle instance type changes
   async function instanceTypeChangeHandler(value: GitlabInstanceType) {
     await setGitlabInstanceType(value)
-    // 如果有 token，重新检查项目状态
+  // 如果有 token，重新检查项目状态
+  // EN: If a token exists, re-check project status
     if (gitlabAccessToken) {
       checkGitlabProjects()
     }
   }
 
   // 自定义 URL 变化处理
+  // EN: Handle custom URL changes
   async function customUrlChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value
     await setGitlabCustomUrl(value)
-    // 如果有 token，重新检查项目状态
+  // 如果有 token，重新检查项目状态
+  // EN: If a token exists, re-check project status
     if (gitlabAccessToken) {
       checkGitlabProjects()
     }
   }
 
   // 获取当前实例的 Token 创建 URL
+  // EN: Get the token creation URL for the current instance
   function getTokenCreateUrl() {
     if (gitlabInstanceType === GitlabInstanceType.SELF_HOSTED) {
       return gitlabCustomUrl ? `${gitlabCustomUrl}/-/user_settings/personal_access_tokens` : '#'
@@ -117,9 +125,11 @@ export function GitlabSync() {
   }
 
   // 获取当前实例显示名称
+  // EN: Get display name for the current instance
   function getInstanceDisplayName() {
     if (gitlabInstanceType === GitlabInstanceType.SELF_HOSTED) {
-      return gitlabCustomUrl || '自建实例'
+  // EN: Use translation fallback for self-hosted display name
+  return gitlabCustomUrl || t('settings.sync.selfHostedDefault') || 'Self-hosted'
     }
     return GITLAB_INSTANCES[gitlabInstanceType].name
   }
@@ -128,19 +138,22 @@ export function GitlabSync() {
     async function init() {
       const store = await Store.load('store.json');
       
-      // 加载实例类型
+  // 加载实例类型
+  // EN: Load instance type
       const instanceType = await store.get<GitlabInstanceType>('gitlabInstanceType')
       if (instanceType) {
         setGitlabInstanceType(instanceType)
       }
       
-      // 加载自定义 URL
+  // 加载自定义 URL
+  // EN: Load custom URL
       const customUrl = await store.get<string>('gitlabCustomUrl')
       if (customUrl) {
         setGitlabCustomUrl(customUrl)
       }
       
-      // 加载访问令牌
+  // 加载访问令牌
+  // EN: Load access token
       const token = await store.get<string>('gitlabAccessToken')
       if (token) {
         setGitlabAccessToken(token)
@@ -159,7 +172,8 @@ export function GitlabSync() {
 
   return (
     <div className="mt-4">
-      {/* Gitlab 实例选择 */}
+  {/* Gitlab 实例选择 */}
+  {/* EN: GitLab instance selector */}
       <SettingRow>
         <FormItem title={t('settings.sync.gitlabInstanceType')} desc={t('settings.sync.gitlabInstanceTypeDesc')}>
           <Select value={gitlabInstanceType} onValueChange={instanceTypeChangeHandler}>
@@ -179,7 +193,8 @@ export function GitlabSync() {
                 <div className="flex items-center gap-2">
                   <Globe className="size-4" />
                   <div>
-                    <div className="font-medium">极狐</div>
+                    <div className="font-medium">{t('settings.sync.jihulab') || '极狐'}</div>
+                    {/* EN: JihuLab (Chinese hosting service name) */}
                   </div>
                 </div>
               </SelectItem>
@@ -196,7 +211,8 @@ export function GitlabSync() {
         </FormItem>
       </SettingRow>
 
-      {/* 自建实例 URL 输入 */}
+  {/* 自建实例 URL 输入 */}
+  {/* EN: Self-hosted instance URL input */}
       {gitlabInstanceType === GitlabInstanceType.SELF_HOSTED && (
         <SettingRow>
           <FormItem title="GitLab URL" desc={t('settings.sync.gitlabInstanceTypeOptions.selfHostedDesc')}>
@@ -210,7 +226,8 @@ export function GitlabSync() {
         </SettingRow>
       )}
 
-      {/* Access Token 输入 */}
+  {/* Access Token 输入 */}
+  {/* EN: Access Token input */}
       <SettingRow>
         <FormItem title="GitLab Access Token" desc={t('settings.sync.gitlabAccessTokenDesc', { instanceDisplayName: getInstanceDisplayName() })}>
           <OpenBroswer 
@@ -231,7 +248,8 @@ export function GitlabSync() {
         </FormItem>
       </SettingRow>
 
-      {/* 项目状态显示 */}
+  {/* 项目状态显示 */}
+  {/* EN: Project status display */}
       <SettingRow>
         <FormItem title={t('settings.sync.repoStatus')}>
           <Card>
@@ -268,11 +286,12 @@ export function GitlabSync() {
         </FormItem>
       </SettingRow>
 
-      {/* 自动同步设置 */}
+  {/* 自动同步设置 */}
+  {/* EN: Auto-sync settings */}
       {
         gitlabSyncProjectInfo &&
         <>
-          <SettingPanel title="自动同步" desc="选择编辑器在输入停止后自动同步的时间间隔">
+          <SettingPanel title={t('settings.sync.autoSyncTitle') || '自动同步'} desc={t('settings.sync.autoSyncDesc') || '选择编辑器在输入停止后自动同步的时间间隔'}>
             <Select
               value={gitlabAutoSync}
               onValueChange={(value) => setGitlabAutoSync(value)}
@@ -294,7 +313,8 @@ export function GitlabSync() {
         </>
       }
 
-      {/* 主要备份方式设置 */}
+  {/* 主要备份方式设置 */}
+  {/* EN: Primary backup method settings */}
       <SettingRow className="mb-4">
         {primaryBackupMethod === 'gitlab' ? (
           <Button disabled variant="outline">
