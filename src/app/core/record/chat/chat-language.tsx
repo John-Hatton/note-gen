@@ -53,11 +53,12 @@ export function ChatLanguage() {
         setChatLanguage(savedLanguage)
         setLocale(savedLanguage)
       } else {
-        const appLocale = await store.get<string>('locale') || 'en'
-        setChatLanguage(appLocale)
-        setLocale(appLocale)
-        await store.set('chatLanguage', appLocale)
-        await store.save()
+        const appLocale = await store.get<string>('locale') || 'en';
+        console.log('Initializing chat language to:', appLocale);
+        setChatLanguage(appLocale);
+        setLocale(appLocale);
+        await store.set('chatLanguage', appLocale);
+        await store.save();
       }
     } catch (error) {
       console.error('Failed to initialize chat language:', error)
@@ -85,7 +86,7 @@ export function ChatLanguage() {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <div className="hidden md:block">
+        <div className="block">
           <TooltipButton
             icon={<Globe className={`size-4 ${chatLanguage ? "text-primary" : ""}`} />}
             tooltipText={`${t('chatLanguage.tooltip') || "Select chat language"} (${getCurrentLanguageName()})`}
