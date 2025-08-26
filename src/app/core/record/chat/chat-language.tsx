@@ -37,7 +37,7 @@ const languageOptions = [
 export function ChatLanguage() {
   const [open, setOpen] = React.useState(false)
   const t = useTranslations('record.chat.input')
-  const [chatLanguage, setChatLanguage] = useState<string>('zh')
+  const [chatLanguage, setChatLanguage] = useState<string>('en')
   const { setLocale } = useChatStore()
   
   function getCurrentLanguageName() {
@@ -53,7 +53,7 @@ export function ChatLanguage() {
         setChatLanguage(savedLanguage)
         setLocale(savedLanguage)
       } else {
-        const appLocale = await store.get<string>('locale') || 'zh'
+        const appLocale = await store.get<string>('locale') || 'en'
         setChatLanguage(appLocale)
         setLocale(appLocale)
         await store.set('chatLanguage', appLocale)
