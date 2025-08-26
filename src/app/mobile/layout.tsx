@@ -31,6 +31,7 @@ export default function RootLayout({
   const { initVectorDb } = useVectorStore()
   
   // 初始化向量数据库
+  // EN: Initialize Vector Database
   useEffect(() => {
     initVectorDb()
   }, [])
