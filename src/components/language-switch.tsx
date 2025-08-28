@@ -42,7 +42,7 @@ export function LanguageSwitch() {
           </Button>
         }
       </DropdownMenuTrigger>
-      <DropdownMenuContent align={isMobileDevice() ? "end" : "start"} side={isMobileDevice() ? "right" : "bottom"}>
+<DropdownMenuContent align={isMobileDevice() ? "end" : "start"} side={isMobileDevice() ? "right" : "bottom"}>
         <DropdownMenuItem onClick={() => changeLanguage("en")}>
           English {currentLocale === "en" && "✓"}
         </DropdownMenuItem>
@@ -51,6 +51,9 @@ export function LanguageSwitch() {
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => changeLanguage("ja")}>
           日本語 {currentLocale === "ja" && "✓"}
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => changeLanguage("de")}>
+          Deutsch {currentLocale === "de" && "✓"}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

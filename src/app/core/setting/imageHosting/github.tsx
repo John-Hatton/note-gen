@@ -17,6 +17,7 @@ import { RepoNames, SyncStateEnum } from "@/lib/github.types";
 import { FileImage } from "lucide-react";
 import useImageStore from "@/stores/imageHosting";
 import { createImageRepo, checkImageRepoState } from "@/lib/imageHosting/github";
+import { getLocalizedSyncState } from "@/lib/locales";  // Corrected import
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 
@@ -121,7 +122,7 @@ export function GithubImageHosting() {
                   <FileImage className="size-4" />
                   {t('settings.sync.imageRepo')} （{ imageRepoInfo?.private ? t('settings.sync.private') : t('settings.sync.public') }）
                 </div>
-                <Badge className={`${imageRepoState === SyncStateEnum.success ? 'bg-green-800' : 'bg-red-800'}`}>{imageRepoState}</Badge>
+<Badge className={`${imageRepoState === SyncStateEnum.success ? 'bg-green-800' : 'bg-red-800'}`}>{getLocalizedSyncState(imageRepoState, t)}</Badge>
               </CardTitle>
               <CardDescription>{t('settings.sync.imageRepoDesc')}</CardDescription>
             </CardHeader>

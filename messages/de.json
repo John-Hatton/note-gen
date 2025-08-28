@@ -1,0 +1,1056 @@
+{
+  "app": {
+    "title": "Notizgenerator",
+    "description": "Ihr KI-gestützter Notizassistent"
+  },
+  "common": {
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "create": "Erstellen",
+    "theme": "Thema",
+    "light": "Hell",
+    "dark": "Dunkel",
+    "system": "System",
+    "pin": "Anheften",
+    "unpin": "Lösen",
+    "settings": "Einstellungen",
+    "sync": "Synchronisieren",
+    "language": "Sprache",
+    "confirm": "Bestätigen",
+    "selectPrompt": "Prompt auswählen",
+    "prompt": "Prompt",
+    "success": "Erfolg",
+    "error": "Fehlgeschlagen"
+  },
+  "settings": {
+    "rag": {
+      "title": "Wissensdatenbank",
+      "desc": "Hier können Sie Einstellungen zur Wissensdatenbank konfigurieren, die auf RAG-Technologie basiert. Texte werden durch Einbettungsmodelle in Vektoren umgewandelt, um intelligente Suche und Antworten zu ermöglichen.",
+      "settingsTitle": "Parameter-Einstellungen",
+      "settingsDesc": "Durch Anpassen der Parameter können Sie die Abrufwirkung der Wissensdatenbank präziser steuern.",
+      "deleteVectorConfirm": "Möchten Sie die Wissensdatenbank wirklich löschen?",
+      "deleteVectorSuccess": "Wissensdatenbank erfolgreich gelöscht",
+      "enable": "Wissensdatenbanksuche aktivieren",
+      "enableDesc": "Wenn aktiviert, durchsucht die KI Ihre Notizen bei der Beantwortung von Fragen, um genauere Antworten zu liefern.",
+      "chunkSize": "Chunk-Größe",
+      "chunkSizeDesc": "Die maximale Anzahl von Zeichen für die Textsegmentierung. Größere Chunks enthalten mehr Kontext, erhöhen jedoch die Komplexität der Vektorberechnung.",
+      "chunkOverlap": "Chunk-Überlappung",
+      "chunkOverlapDesc": "Die Anzahl überlappender Zeichen zwischen Text-Chunks. Größere Überlappungen können die Kontextkontinuität aufrechterhalten.",
+      "resultCount": "Ergebnisanzahl",
+      "resultCountDesc": "Die Anzahl der bei der Suche zurückgegebenen relevanten Dokumente. Mehr Dokumente liefern mehr Informationen, können aber auch Rauschen verursachen.",
+      "similarityThreshold": "Ähnlichkeitsschwelle",
+      "similarityThresholdDesc": "Die minimale Ähnlichkeitsschwelle zwischen Dokumenten und Anfragen. Nur Dokumente, die diesen Schwellenwert überschreiten, werden zurückgegeben. Der Wertebereich ist 0,0–1,0; je höher der Schwellenwert, desto strenger die Anforderung.",
+      "resetToDefaults": "Auf Standard zurücksetzen",
+      "deleteVector": "Wissensdatenbank löschen"
+    },
+    "editor": {
+      "title": "Markdown-Editor",
+      "desc": "Hier können Sie den Markdown-Editor anpassen, um ein auf Ihre Bedürfnisse zugeschnittenes Schreibgefühl zu schaffen.",
+      "typewriterMode": "Schreibmaschinenmodus",
+      "typewriterModeDesc": "Im Schreibmaschinenmodus simuliert der Editor einen Schreibmaschineneffekt, um das Eintauchen ins Schreiben zu verbessern.",
+      "outlineEnable": "Standardmäßig Gliederung aktiviert",
+      "outlineEnableDesc": "Wenn aktiviert, ist die Gliederung standardmäßig sichtbar.",
+      "outlinePosition": "Position der Gliederung",
+      "outlinePositionDesc": "Legen Sie die Position der Gliederung fest.",
+      "outlinePositionOptions": {
+        "left": "Links",
+        "right": "Rechts"
+      },
+      "pageView": "Seitenansicht",
+      "pageViewDesc": "In der immersiven Ansicht lässt der Editor viel Freiraum auf beiden Seiten, während in der Panoramaansicht der Editorinhalt den gesamten Bearbeitungsbereich einnimmt.",
+      "pageViewOptions": {
+        "immersiveView": "Immersive Ansicht",
+        "panoramaView": "Panoramaansicht"
+      },
+      "enableLineNumber": "Zeilennummern aktivieren",
+      "enableLineNumberDesc": "Wenn aktiviert, werden Zeilennummern in Codeblöcken angezeigt."
+    },
+    "uploadStore": {
+      "uploadConfirm": "Bitte stellen Sie sicher, dass das Synchronisations-Repository privat ist, da sonst Datenlecks auftreten können!",
+      "downloadConfirm": "Das Herunterladen der Konfiguration überschreibt die lokale Konfiguration und erfordert einen Neustart, um wirksam zu werden!",
+      "uploadSuccess": "Hochladen erfolgreich",
+      "downloadSuccess": "Herunterladen erfolgreich",
+      "upload": "Hochladen",
+      "download": "Herunterladen"
+    },
+    "about": {
+      "title": "Über",
+      "desc": "Ein Notizassistent, der sich auf Aufzeichnung und Schreiben konzentriert.",
+      "version": "NoteGen v{version}",
+      "checkReleases": "Versionsverlauf prüfen",
+      "language": "Sprache",
+      "checkUpdate": "Nach Updates suchen",
+      "checkError": "Fehler beim Suchen nach Updates",
+      "updateAvailable": "Auf neue Version aktualisieren",
+      "updateDownloading": "Aktualisierung {downloaded} / {contentLength}",
+      "updateInstalled": "App neu starten",
+      "noUpdate": "Aktuelle Version ist die neueste",
+      "items": {
+        "home": {
+          "title": "Startseite",
+          "buttonName": "Öffnen",
+          "desc": "Besuchen Sie die Website, um mehr über NoteGen zu erfahren."
+        },
+        "guide": {
+          "title": "Anleitung",
+          "buttonName": "Öffnen",
+          "desc": "Sehen Sie sich die Konfigurationsanleitung an, um zu erfahren, wie Sie Modelle, Synchronisation usw. konfigurieren."
+        },
+        "github": {
+          "title": "GitHub",
+          "buttonName": "Ansehen",
+          "desc": "Wenn NoteGen Ihnen hilft, geben Sie bitte einen Stern zur Unterstützung!"
+        },
+        "releases": {
+          "title": "Update-Protokoll",
+          "buttonName": "Ansehen",
+          "desc": "Sehen Sie sich das Update-Protokoll an, um mehr über die Updates von NoteGen zu erfahren."
+        },
+        "issues": {
+          "title": "Fehler-Feedback",
+          "buttonName": "Feedback",
+          "desc": "Wenn Sie einen Fehler in NoteGen finden, geben Sie hier bitte Feedback."
+        },
+        "discussions": {
+          "title": "Diskussionen",
+          "buttonName": "Diskutieren",
+          "desc": "Wenn Sie mit dem Autor oder anderen Nutzern diskutieren möchten, können Sie der Gruppendiskussion beitreten."
+        }
+      }
+    },
+    "defaultModel": {
+      "title": "Standardmodell",
+      "desc": "Hier können Sie verschiedene Modelle für unterschiedliche Szenarien verwenden, um die Effizienz zu steigern und Kosten zu senken.",
+      "tooltip": "Hauptmodell verwenden",
+      "noModel": "Nicht verwenden",
+      "placeholder": "Bitte wählen oder suchen Sie nach Modellen",
+      "main": "Hauptmodell",
+      "options": {
+        "primaryModel": {
+          "title": "Hauptmodell",
+          "desc": "Als Hauptmodell für alle Szenarien wird dieses Modell verwendet, wenn andere Dialogmodelle kein Standardmodell auswählen."
+        },
+        "markDesc": {
+          "title": "Aufzeichnungsbeschreibung",
+          "desc": "Wird verwendet, um Aufzeichnungen nach OCR-Erkennung zu verarbeiten und Beschreibungen zu generieren."
+        },
+        "placeholder": {
+          "title": "KI-Vorschlag",
+          "desc": "KI-Vorschlagsprompts werden für die Inhaltsgenerierung im Platzhalter der Aufzeichnungsseite verwendet."
+        },
+        "translate": {
+          "title": "Übersetzung",
+          "desc": "Wird für Szenarien zur Übersetzung von Inhalten verwendet."
+        },
+        "embedding": {
+          "title": "Einbettungsmodell",
+          "desc": "Wird für Szenarien zur Texteinbettung und Vektorisierung verwendet."
+        },
+        "reranking": {
+          "title": "Reranking-Modell",
+          "desc": "Wird zur Neuordnung und Optimierung von Suchergebnissen verwendet."
+        }
+      }
+    },
+    "readAloud": {
+      "title": "Vorlesen",
+      "desc": "Hier können Sie Einstellungen zum Vorlesen konfigurieren, um eine Sprachwiedergabe für Chat-Inhalte bereitzustellen.",
+      "noModel": "Nicht verwenden",
+      "options": {
+        "audioModel": {
+          "title": "Audiomodell",
+          "desc": "Wählen Sie das KI-Modell für die Text-zu-Sprache-Umwandlung, unterstützt verschiedene Stimmentypen und Parameterkonfigurationen."
+        },
+        "speed": {
+          "title": "Sprechgeschwindigkeit",
+          "desc": "Passen Sie die Wiedergabegeschwindigkeit der Stimme an, von 0,25x bis 4x, wobei 1x die normale Geschwindigkeit ist."
+        }
+      }
+    },
+    "prompt": {
+      "title": "Prompt",
+      "promptTitle": "Prompt-Titel",
+      "desc": "Hier können Sie Prompts hinzufügen und verwalten, um der KI zu helfen, Ihre Bedürfnisse besser zu verstehen.",
+      "addPrompt": "Prompt hinzufügen",
+      "selectPrompt": "Prompt auswählen",
+      "configPrompt": "Prompt konfigurieren",
+      "noContent": "Kein Inhalt",
+      "addPromptDesc": "Bitte geben Sie den Prompt-Namen und -Inhalt ein, um der KI zu helfen, Ihre Bedürfnisse besser zu verstehen.",
+      "promptTitlePlaceholder": "Bitte geben Sie den Prompt-Namen ein",
+      "promptContentPlaceholder": "Bitte geben Sie den Prompt-Inhalt ein",
+      "promptContent": "Prompt-Inhalt",
+      "optimizePrompt": "Prompt optimieren",
+      "optimizing": "Optimiere...",
+      "optimizeSuccess": "Prompt erfolgreich optimiert",
+      "optimizeFailed": "Prompt-Optimierung fehlgeschlagen, bitte versuchen Sie es später erneut",
+      "noContentToOptimize": "Bitte geben Sie zuerst den Prompt-Inhalt ein"
+    },
+    "sync": {
+      "autoSyncTitle": "Automatische Synchronisation",
+      "autoSyncDesc": "Aktivieren Sie die automatische Synchronisation für nahtlose Updates.",
+      "title": "Synchronisation",
+      "desc": "Hier können Sie das Synchronisations-Repository konfigurieren, um Aufzeichnungen, Markdown-Dateien, Systemkonfigurationen und andere Informationen zu synchronisieren.",
+      "repoStatus": "Repository-Status",
+      "checking": "Prüfen...",
+      "creating": "Erstellen...",
+      "syncRepo": "Synchronisations-Repository",
+      "syncRepoDesc": "Synchronisieren Sie Markdown-Dateien beim Schreiben",
+      "imageRepo": "Bild-Repository",
+      "imageRepoDesc": "Synchronisieren Sie Ihre Bilder mit dem Repository, verwenden Sie jsDelivr zur Beschleunigung",
+      "private": "Privat",
+      "public": "Öffentlich",
+      "createdAt": "Erstellt {time}",
+      "updatedAt": "Zuletzt aktualisiert {time}",
+      "newToken": "Zugriffstoken erstellen",
+      "newTokenDesc": "Stellen Sie beim Erstellen eines neuen Tokens sicher, dass die Repository-Berechtigung aktiviert ist. Nach der Konfiguration wird automatisch ein Datei-Repository (privat) und ein Bild-Repository erstellt.",
+      "giteeTokenDesc": "Der persönliche Gitee-Zugriffstoken wird für die Datensynchronisation verwendet. Es sind Lese- und Schreibrechte für das Repository erforderlich. Nach der Konfiguration wird automatisch ein Datei-Repository (privat) und ein Bild-Repository erstellt.",
+      "imageRepoSetting": "Lokale/Cloud-Speicherung",
+      "imageRepoSettingDesc": "Sie haben bereits ein Bild-Repository konfiguriert. Sie können wählen, ob Sie das Bild-Repository oder lokale Speicherung verwenden möchten.",
+      "jsdelivrSetting": "jsDelivr",
+      "jsdelivrSettingDesc": "Verwenden Sie jsDelivr, um den Bildzugriff zu beschleunigen.",
+      "autoSync": "Automatische Synchronisation",
+      "giteeAutoSyncDesc": "Wenn aktiviert, synchronisiert der Editor 10 Sekunden nach Beendigung der Eingabe automatisch mit Gitee",
+      "backupMethod": "Backup-Methode",
+      "backupMethodDesc": "Nach Festlegung als primäre Backup-Methode verwenden alle synchronisationsbezogenen Funktionen beim Schreiben die aktuelle Backup-Methode (außer für Bild-Hosting).",
+      "isPrimaryBackup": "{type} ist die aktuelle primäre Backup-Methode",
+      "setPrimaryBackup": "Als primäre Backup-Methode festlegen",
+      "gitlabInstanceType": "GitLab-Instanztyp",
+      "gitlabInstanceTypeDesc": "Wählen Sie den GitLab-Instanztyp für die Verbindung aus",
+      "gitlabInstanceTypePlaceholder": "GitLab-Instanztyp auswählen",
+      "gitlabInstanceTypeOptions": {
+        "selfHosted": "Selbst gehostete Instanz",
+        "selfHostedDesc": "Geben Sie die Adresse Ihres selbst gehosteten GitLab-Servers ein (z. B. https://gitlab.example.com)"
+      },
+      "gitlabAccessTokenDesc": "Erstellen Sie einen persönlichen Zugriffstoken in {instanceDisplayName}, API-Berechtigung erforderlich",
+      "autoSyncOptions": {
+        "placeholder": "Automatische Synchronisationszeit auswählen",
+        "disabled": "Deaktiviert",
+        "10s": "10 Sekunden",
+        "30s": "30 Sekunden",
+        "1m": "1 Minute",
+        "5m": "5 Minuten",
+        "30m": "30 Minuten"
+      }
+    },
+    "imageHosting": {
+      "title": "Bild-Hosting",
+      "desc": "Hier können Sie Bild-Hosting konfigurieren und Bilder auf den Bild-Hosting-Dienst hochladen.",
+      "isPrimaryBackup": "Aktuelle {type} primäre Bild-Hosting-Methode",
+      "setPrimaryBackup": "Als primäre Bild-Hosting-Methode festlegen",
+      "smms": {
+        "token": {
+          "desc": "Bitte erstellen und geben Sie den SM.MS-Token ein.",
+          "createToken": "Token erstellen"
+        },
+        "disk": "Speicherauslastung",
+        "error": "Fehler beim Abrufen, bitte überprüfen Sie das Netzwerk oder ob der Token korrekt ist."
+      },
+      "picgo": {
+        "desc": "PicGo-Server-URL",
+        "ok": "Dienst läuft, bitte stellen Sie sicher, dass PicGo-Bild-Hosting konfiguriert ist.",
+        "error": "Dienst läuft nicht, bitte stellen Sie sicher, dass PicGo (v2.2.0+) läuft, da sonst der Bild-Upload fehlschlägt."
+      }
+    },
+    "imageMethod": {
+      "title": "Bilderkennung",
+      "desc": "Hier können Sie Einstellungen zur Bilderkennung konfigurieren, die OCR und VLM unterstützen.",
+      "setPrimary": "Als Standard festlegen",
+      "isPrimary": "{type} wurde als Standard festgelegt",
+      "ocr": {
+        "title": "OCR",
+        "languagePacks": "Sprachpakete",
+        "checkModels": "Hier können Sie alle Modelle suchen",
+        "modelInstruction": "Durch Kommas getrennt, z. B.: eng,chi_sim"
+      },
+      "vlm": {
+        "title": "Visuelles Sprachmodell",
+        "desc": "Verwenden Sie ein visuelles Sprachmodell, um Bildinhalte zu erkennen."
+      }
+    },
+    "backupSync": {
+      "title": "Daten-Backup",
+      "desc": "Hier können Sie andere Methoden verwenden, um Ihre Daten zu sichern. Regelmäßige Backups gewährleisten Datensicherheit.",
+      "webdav": {
+        "connectionState": {
+          "success": "Verbunden",
+          "checking": "Verbindung wird hergestellt",
+          "failed": "Nicht verbunden"
+        },
+        "description": "WebDAV wird nur als Backup-Lösung verwendet und unterstützt keine automatische Synchronisation, Verlaufsrücksetzung oder andere Funktionen.",
+        "backupTo": "Auf WebDAV sichern",
+        "syncFrom": "Von WebDAV synchronisieren",
+        "serverUrl": "WebDAV-Server-URL",
+        "serverUrlDesc": "Geben Sie die URL des WebDAV-Servers ohne Pfad ein, z. B.: https://dav.example.com http://192.8.8.88:9999",
+        "serverUrlPlaceholder": "https://dav.example.com",
+        "username": "Benutzername",
+        "usernameDesc": "WebDAV-Server-Benutzername",
+        "usernamePlaceholder": "Benutzername",
+        "password": "Passwort",
+        "passwordDesc": "WebDAV-Server-Passwort",
+        "passwordPlaceholder": "Passwort",
+        "backupPath": "Backup-Pfad",
+        "backupPathDesc": "Backup-Pfad auf dem WebDAV-Server, z. B.: /backup/notes",
+        "backupPathPlaceholder": "/backup/notes",
+        "backupSuccess": "Backup erfolgreich",
+        "backupSuccessDesc": "{count} Dateien auf WebDAV gesichert.",
+        "syncSuccess": "Synchronisation erfolgreich",
+        "syncSuccessDesc": "{count} Dateien von WebDAV lokal synchronisiert.",
+        "syncFailed": "Synchronisation fehlgeschlagen",
+        "backupFailed": "Backup fehlgeschlagen",
+        "directoryCreated": "Verzeichnis erstellt",
+        "directoryCreatedDesc": "Verzeichnis {path} erfolgreich erstellt.",
+        "createDir": "Verzeichnis erstellen",
+        "success": "Erfolg",
+        "failed": "Fehlgeschlagen",
+        "error": {
+          "pathNotFound": "Pfad nicht gefunden oder Server nicht erreichbar.",
+          "createDirFailed": "Erstellen des Verzeichnisses fehlgeschlagen",
+          "connectionTimeOut": "Verbindungstimeout, bitte überprüfen Sie das Netzwerk oder den Server."
+        }
+      }
+    },
+    "template": {
+      "title": "Vorlage",
+      "customTemplate": "Benutzerdefinierte Vorlage",
+      "addTemplate": "Benutzerdefinierte Vorlage hinzufügen",
+      "deleteConfirm": "Möchten Sie diese Vorlage wirklich löschen?",
+      "status": "Status",
+      "name": "Name",
+      "content": "Inhalt",
+      "scope": "Bereich",
+      "selectScope": "Bereich auswählen",
+      "addTemplateDesc": "Bitte geben Sie den Namen und Inhalt der benutzerdefinierten Vorlage ein, um der KI zu helfen, Ihre Bedürfnisse besser zu verstehen.",
+      "editTemplate": "Benutzerdefinierte Vorlage bearbeiten",
+      "noContent": "Kein Inhalt",
+      "range": {
+        "all": "Alle",
+        "today": "Heute",
+        "week": "Letzte Woche",
+        "month": "Letzter Monat",
+        "threeMonth": "Letzte 3 Monate",
+        "year": "Letztes Jahr"
+      }
+    },
+    "shortcut": {
+      "title": "Tastenkombinationen",
+      "screenshot": "Bildschirmaufnahme",
+      "link": "Link-Aufzeichnung",
+      "textRecord": "Text-Aufzeichnung",
+      "windowPin": "Fenster anheften"
+    },
+    "theme": {
+      "title": "Erscheinungsbild",
+      "appTheme": "Anwendungsthema",
+      "previewTheme": "Vorschau-Inhaltsthema",
+      "codeTheme": "Codeblock-Hervorhebungsthema",
+      "selectTheme": "Thema auswählen"
+    },
+    "dev": {
+      "title": "Entwickler",
+      "clearData": "Daten löschen",
+      "clearDataConfirm": "Möchten Sie die Daten wirklich löschen?",
+      "proxy": "Proxy, um Netzwerkprobleme zu lösen. Nach der Konfiguration wird ein Neustart der Anwendung empfohlen.",
+      "proxyPlaceholder": "Proxy-Adresse eingeben",
+      "importConfig": "Konfiguration importieren",
+      "exportConfig": "Konfiguration exportieren",
+      "importSuccess": "Import erfolgreich",
+      "importSuccessDesc": "Konfiguration erfolgreich heruntergeladen, bitte starten Sie die Anwendung manuell neu",
+      "importButton": "Importieren",
+      "exportButton": "Exportieren",
+      "configImportExportDesc": "Import und Export der Konfiguration umfassen nur Anwendungseinstellungen, keine Aufzeichnungen und Notizen.",
+      "dataClearedMessage": "Daten erfolgreich gelöscht",
+      "restartTitle": "Neustart erforderlich",
+      "filesCleared": "Dateien erfolgreich gelöscht",
+      "clearDataDesc": "Löschen Sie persistente Einstellungen und die Datenbank (einschließlich Aufzeichnungen).",
+      "clearDataButton": "Daten löschen",
+      "clearFilesDesc": "Löschen Sie zwischengespeicherte Dateien (Bilder, Anhänge usw.) im Arbeitsbereichsverzeichnis 'assets'.",
+      "clearFilesButton": "Dateien löschen"
+    },
+    "ai": {
+      "title": "Modellverwaltung",
+      "desc": "Hier können Sie verschiedene benutzerdefinierte Modellservices hinzufügen und verwalten. Nach der Konfiguration werden KI-bezogene Funktionen wie Organisation und Konversation freigeschaltet.",
+      "modelTitle": "Benutzerdefinierter Name",
+      "modelConfigTitle": "Modellkonfiguration",
+      "modelConfigDesc": "Jede Konfiguration entspricht einem KI-Modell. Sie können neue Konfigurationen über Vorlagen oder benutzerdefiniert erstellen.",
+      "create": "Erstellen",
+      "createDesc": "Wählen Sie eine leere Konfiguration oder erstellen Sie eine neue Konfiguration mit der Anbietervorlage.",
+      "config": "Konfiguration",
+      "custom": "Benutzerdefiniert",
+      "addCustomModel": "Benutzerdefiniert",
+      "deleteCustomModel": "Löschen",
+      "deleteCustomModelConfirm": "Möchten Sie dieses benutzerdefinierte Modell wirklich löschen?",
+      "copyConfig": "Kopieren",
+      "builtin": "Integriert",
+      "modelSupport": "Unterstützt nur KI-Modelle mit OpenAI-Protokoll",
+      "apiKeyUrl": "API-Schlüssel erstellen",
+      "modelType": {
+        "title": "Modelltyp",
+        "desc": "Wählen Sie den Typ des KI-Modells basierend auf seiner Fähigkeit",
+        "chat": "Chat",
+        "image": "Bild",
+        "video": "Video",
+        "audio": "Audio",
+        "embedding": "Einbettung",
+        "rerank": "Reranking"
+      },
+      "modelList": {
+        "error": {
+          "title": "Fehler beim Abrufen der Modellliste",
+          "description": "Bitte überprüfen Sie, ob der API-Schlüssel oder das Netzwerk korrekt ist"
+        }
+      },
+      "selectModel": "Bitte wählen Sie ein Modell",
+      "modelProviderDesc": "Benutzerdefinierte Modelle unterstützen nur KI-Modelle mit OpenAI-Protokoll.",
+      "modelTitleDesc": "Benutzerdefinierter Name zur Identifizierung von KI-Modellen, bitte nicht wiederholen.",
+      "modelBaseUrlDesc": "Sie müssen nur die Versionsnummer konfigurieren, z. B.: https://api.openai.com/v1, der Suffix wird automatisch hinzugefügt.",
+      "modelDesc": "Einige Modelle unterstützen das Abrufen der Modellliste, falls nicht unterstützt, konfigurieren Sie bitte manuell.",
+      "temperatureDesc": "Steuert die Zufälligkeit der Ausgabe. Niedrigere Werte machen den generierten Inhalt deterministischer.",
+      "topPDesc": "Eine Kernstichprobenmethode, bei der das Modell die Ergebnisse von Token mit der top_p-Wahrscheinlichkeitsmasse berücksichtigt. 0,1 bedeutet, dass nur die obersten 10 % der Wahrscheinlichkeitsmasse berücksichtigt werden. Wir empfehlen, entweder dies oder die Temperatur zu ändern, aber nicht beides.",
+      "customHeaders": "Benutzerdefinierte Header",
+      "customHeadersDesc": "Fügen Sie benutzerdefinierte HTTP-Header mit Schlüssel-Wert-Paaren hinzu.",
+      "connectionSuccess": "KI-Verbindungstest bestanden",
+      "headerKey": "Schlüssel",
+      "headerValue": "Wert",
+      "addHeader": "Header hinzufügen"
+    },
+    "ocr": {
+      "title": "OCR",
+      "languagePacks": "Sprachpakete",
+      "checkModels": "Alle Modelle hier prüfen",
+      "modelInstruction": "Durch Kommas getrennt, z. B.: eng,chi_sim"
+    },
+    "file": {
+      "title": "Dateieinstellungen",
+      "desc": "Hier können Sie Arbeitsbereichseinstellungen und andere dateibezogene Optionen verwalten.",
+      "workspace": {
+        "title": "Arbeitsbereichseinstellungen",
+        "desc": "Legen Sie das Arbeitsbereichsverzeichnis der Anwendung fest, in dem Dateien gespeichert werden.",
+        "current": "Aktueller Arbeitsbereichspfad",
+        "defaultPath": "Standard-Arbeitsbereich",
+        "default": "Standard-Arbeitsbereichspfad wird verwendet",
+        "custom": "Benutzerdefinierter Arbeitsbereichspfad wird verwendet",
+        "select": "Arbeitsbereichsverzeichnis auswählen",
+        "reset": "Auf Standardpfad zurücksetzen",
+        "history": "Verlaufspfade",
+        "selectFromHistory": "Arbeitsbereich aus Verlauf auswählen",
+        "clearHistory": "Verlauf löschen",
+        "actions": "Aktionen",
+        "searchPlaceholder": "Arbeitsbereichspfade suchen...",
+        "noResults": "Keine Ergebnisse gefunden"
+      },
+      "info": {
+        "title": "Arbeitsbereichsinformationen",
+        "desc": "Nach dem Ändern des Arbeitsbereichs müssen Sie die Anwendung neu starten, damit die Änderungen vollständig wirksam werden. Dateien im neuen Arbeitsbereich werden nach dem Neustart angezeigt."
+      },
+      "toast": {
+        "updated": "Arbeitsbereich aktualisiert",
+        "updatedDesc": "Arbeitsbereich auf {path} gesetzt",
+        "reset": "Arbeitsbereich zurückgesetzt",
+        "resetDesc": "Auf Standard-Arbeitsbereich zurückgestellt",
+        "error": "Arbeitsbereichsauswahl fehlgeschlagen",
+        "errorDesc": "Arbeitsbereichsverzeichnis konnte nicht ausgewählt werden, bitte versuchen Sie es erneut",
+        "resetError": "Zurücksetzen des Arbeitsbereichs fehlgeschlagen",
+        "resetErrorDesc": "Konnte nicht auf Standard-Arbeitsbereich zurückgesetzt werden, bitte versuchen Sie es erneut"
+      },
+      "assets": {
+        "title": "Asset-Pfad",
+        "desc": "Legen Sie den Pfad fest, in dem Ressourcen (z. B. Bilder, Videos, Dateien usw.), die beim Schreiben verwendet werden, gespeichert werden. Ressourcen werden auf derselben Ebene wie die aktuell bearbeitete Markdown-Datei gespeichert.",
+        "select": "Pfad festlegen, in dem Ressourcen gespeichert werden, die beim Schreiben verwendet werden"
+      }
+    },
+    "shortcuts": {
+      "title": "Tastenkombinationen",
+      "desc": "Hier können Sie Tastenkombinationen konfigurieren, um NoteGen effizienter zu nutzen.",
+      "resetDefaults": "Zurücksetzen",
+      "clear": "Löschen",
+      "noShortcut": "Keine Tastenkombination",
+      "shortcuts": {
+        "openWindow": {
+          "title": "Fenster öffnen/ausblenden",
+          "desc": "Öffnet/verbirgt das Hauptfenster."
+        },
+        "quickRecordText": {
+          "title": "Schnelle Textaufzeichnung",
+          "desc": "Öffnet schnell das Hauptfenster und wechselt zur Textaufzeichnung."
+        }
+      }
+    }
+  },
+  "record": {
+    "trash": {
+      "title": "Papierkorb leeren",
+      "confirm": "Möchten Sie den Papierkorb wirklich leeren?",
+      "records": "{count} Aufzeichnungen können wiederhergestellt werden",
+      "empty": "Leer",
+      "close": "Papierkorb schließen"
+    },
+    "queue": {
+      "ocr": "OCR-Erkennung",
+      "ai": "KI-Inhaltserkennung",
+      "upload": "Auf Bild-Host hochladen",
+      "jsdelivr": "jsDelivr-Cache benachrichtigen",
+      "recording": "Aufnahme...",
+      "recorded": "Aufgenommen",
+      "record": "Aufzeichnen",
+      "detected": "Erkannt"
+    },
+    "mark": {
+      "empty": "Noch keine Aufzeichnungen",
+      "loading": "Laden...",
+      "createdAt": "Erstellt am",
+      "type": {
+        "scan": "Scan",
+        "image": "Bild",
+        "screenshot": "Bildschirmaufnahme",
+        "text": "Text",
+        "file": "Datei",
+        "link": "Link",
+        "upload": "Aufzeichnung hochladen",
+        "download": "Aufzeichnung herunterladen"
+      },
+      "uploadSuccess": "Aufzeichnung erfolgreich hochgeladen",
+      "downloadSuccess": "Aufzeichnung erfolgreich heruntergeladen",
+      "desc": "Beschreibung",
+      "content": "Inhalt",
+      "progress": {
+        "cacheImage": "Bild zwischenspeichern",
+        "ocr": "OCR-Erkennung",
+        "aiAnalysis": "KI-Inhaltsanalyse",
+        "uploadImage": "Auf Bild-Host hochladen",
+        "jsdelivrCache": "jsDelivr-Cache benachrichtigen",
+        "cacheFile": "Datei zwischenspeichern",
+        "cacheScreenshot": "Bildschirmaufnahme zwischenspeichern",
+        "textAnalysis": "Textanalyse",
+        "save": "Speichern",
+        "saveImage": "Bild speichern",
+        "newToken": "Zugriffstoken erstellen",
+        "newTokenDesc": "Der neue Token muss mit Repository-Berechtigung konfiguriert sein. Die Konfiguration erstellt automatisch ein Datei-Repository (privat) und ein Bild-Repository."
+      },
+      "text": {
+        "title": "Text aufzeichnen",
+        "description": "Zeichnen Sie ein Stück Text auf, das an der entsprechenden Stelle eingefügt wird, wenn Notizen organisiert werden.",
+        "characterCount": "{count} Zeichen",
+        "save": "Speichern"
+      },
+      "link": {
+        "title": "Link aufzeichnen",
+        "description": "Geben Sie einen Webseitenlink ein, und das System wird den Seiteninhalt automatisch abrufen und speichern",
+        "save": "Speichern"
+      },
+      "clipboard": {
+        "detectedImage": "Bild in der Zwischenablage erkannt",
+        "detectedText": "Text in der Zwischenablage erkannt"
+      },
+      "tag": {
+        "searchPlaceholder": "Tags erstellen oder suchen...",
+        "noResults": "Keine passenden Tags gefunden",
+        "quickAdd": "Schnell erstellen",
+        "pinned": "Angeheftet",
+        "others": "Andere",
+        "rename": "Umbenennen",
+        "delete": "Löschen",
+        "pin": "Anheften",
+        "unpin": "Lösen"
+      },
+      "mark": {
+        "type": {
+          "text": "Text"
+        },
+        "chat": {
+          "placeholder": {
+            "default": "Fragen stellen oder Ihre Notizen in einen Artikel organisieren...",
+            "noApiKey": "API-Schlüssel nicht konfiguriert, KI-Chat-Funktion nicht verfügbar..."
+          },
+          "header": {
+            "configApiKey": "API-Schlüssel konfigurieren",
+            "clearChat": "Chat löschen"
+          },
+          "clipboard": {
+            "image": {
+              "detected": "Bild in der Zwischenablage erkannt:",
+              "recording": "Aufnahme...",
+              "recorded": "Aufgenommen",
+              "record": "Aufzeichnen"
+            },
+            "text": {
+              "detected": "Text in der Zwischenablage erkannt:",
+              "recorded": "Aufgenommen",
+              "record": "Aufzeichnen"
+            }
+          },
+          "messageControl": {
+            "words": "Wörter"
+          },
+          "empty": {
+            "features": [
+              {
+                "chat": "Mit KI-Bot chatten"
+              },
+              {
+                "linked": "Mit Ihren Aufzeichnungen verknüpft"
+              },
+              {
+                "clipboard": "Zwischenablage-Aufzeichnungen erkennen"
+              },
+              {
+                "organize": "Ihre Aufzeichnungen in Notizen organisieren"
+              }
+            ]
+          },
+          "content": {
+            "organize": "Ihre Aufzeichnungen in einen Artikel organisieren:"
+          },
+          "note": {
+            "writing": "Schreiben",
+            "convert": "Artikel konvertieren",
+            "description": "Die aktuelle Notiz wurde von der KI generiert und kann nicht bearbeitet werden. Konvertieren Sie die aktuelle Notiz in einen Artikel (lokale Datei erstellen) für sekundäre Bearbeitung auf der Schreibseite.",
+            "filename": "Dateiname",
+            "selectFolder": "Ordner auswählen",
+            "rootDirectory": "Stammverzeichnis",
+            "deleteTag": "Aktuelles Tag, Aufzeichnungen und Notizen löschen (können aus dem Papierkorb wiederhergestellt werden)",
+            "warning": "Nach der Konvertierung werden Sie zur Schreibseite weitergeleitet.",
+            "convert_button": "Konvertieren"
+          },
+          "mark": {
+            "recorded": "Aufgenommen",
+            "record": "Aufzeichnen"
+          },
+          "send": "Senden"
+        },
+        "text": {
+          "title": "Text aufzeichnen",
+          "description": "Zeichnen Sie ein Stück Text auf, das an der entsprechenden Stelle eingefügt wird, wenn Notizen organisiert werden.",
+          "characterCount": "{count} Zeichen",
+          "save": "Speichern"
+        },
+        "clipboard": {
+          "detectedImage": "Bild in der Zwischenablage erkannt",
+          "detectedText": "Text in der Zwischenablage erkannt"
+        },
+        "tag": {
+          "searchPlaceholder": "Tags erstellen oder suchen...",
+          "noResults": "Keine passenden Tags gefunden",
+          "quickAdd": "Schnell erstellen",
+          "pinned": "Angeheftet",
+          "others": "Andere",
+          "rename": "Umbenennen",
+          "delete": "Löschen",
+          "pin": "Anheften",
+          "unpin": "Lösen"
+        },
+        "progress": {
+          "cacheImage": "Bild zwischenspeichern",
+          "ocr": "OCR-Erkennung",
+          "aiAnalysis": "KI-Inhaltsanalyse",
+          "uploadImage": "Auf Bild-Host hochladen",
+          "jsdelivrCache": "jsDelivr-Cache benachrichtigen",
+          "cacheFile": "Datei zwischenspeichern",
+          "cacheScreenshot": "Bildschirmaufnahme zwischenspeichern",
+          "textAnalysis": "Textanalyse",
+          "save": "Speichern",
+          "saveImage": "Bild speichern"
+        }
+      },
+      "toolbar": {
+        "search": "Suchen",
+        "trash": "Papierkorb",
+        "restore": "Wiederherstellen",
+        "delete": "Löschen",
+        "deleteConfirm": "Möchten Sie wirklich löschen?",
+        "moveTag": "Zu Tag verschieben",
+        "convertTo": "Konvertieren in {type}",
+        "copyLink": "Link kopieren",
+        "copied": "In die Zwischenablage kopiert!",
+        "regenerateDesc": "Beschreibung neu generieren",
+        "viewFolder": "Im Ordner anzeigen",
+        "viewFile": "Originaldatei anzeigen",
+        "deleteForever": "Endgültig löschen",
+        "sortByName": "Nach Name sortieren",
+        "sortByCreated": "Nach Erstellung sortieren",
+        "sortByModified": "Nach Änderung sortieren",
+        "sortAsc": "Aufsteigend sortieren",
+        "sortDesc": "Absteigend sortieren",
+        "sort": "Sortieren",
+        "processingVectors": "Vektordaten werden verarbeitet",
+        "calculateVectors": "Dokumentvektoren berechnen",
+        "enableVectorDb": "Vektordatenbank aktivieren"
+      }
+    },
+    "chat": {
+      "empty": {
+        "features": [
+          {
+            "chat": "Mit KI-Bot chatten"
+          },
+          {
+            "linked": "Mit Ihren Aufzeichnungen verknüpft"
+          },
+          {
+            "clipboard": "Zwischenablage-Aufzeichnungen erkennen"
+          },
+          {
+            "organize": "Ihre Aufzeichnungen in Notizen organisieren"
+          }
+        ]
+      },
+      "newChat": "Neuer Chat mit neuem Tag",
+      "removeChat": "Chat mit aktuellem Tag entfernen",
+      "confirmNew": "Neues Tag erstellen",
+      "confirmNewDescription": "Möchten Sie wirklich ein neues Tag erstellen, um eine Konversation zu starten?",
+      "confirmRemove": "Tag löschen",
+      "confirmRemoveDescription": "Bitte beachten Sie, dass das Löschen dieses Tags auch alle darin enthaltenen Aufzeichnungen löscht. Bitte bestätigen Sie erneut.",
+      "content": {
+        "organize": "Ihre Aufzeichnungen in einen Artikel organisieren:"
+      },
+      "note": {
+        "organize": "Organisieren",
+        "writing": "Schreiben",
+        "convert": "Artikel konvertieren",
+        "description": "Die aktuelle Notiz wurde von der KI generiert und kann nicht bearbeitet werden. Konvertieren Sie die aktuelle Notiz in einen Artikel (lokale Datei erstellen) für sekundäre Bearbeitung auf der Schreibseite.",
+        "filename": "Dateiname",
+        "selectFolder": "Ordner auswählen",
+        "rootDirectory": "Stammverzeichnis",
+        "deleteTag": "Aktuelles Tag, Aufzeichnungen und Notizen löschen (können aus dem Papierkorb wiederhergestellt werden)",
+        "warning": "Nach der Konvertierung werden Sie zur Schreibseite weitergeleitet.",
+        "convert_button": "Konvertieren",
+        "organizeAs": "Ihre Aufzeichnungen in einen Artikel organisieren:",
+        "templateContent": "Vorlageninhalt",
+        "recordRange": "Aufzeichnungsbereich",
+        "filterThinkingContent": "Gedankeninhalt aus Aufzeichnungen entfernen",
+        "startOrganize": "Organisation starten",
+        "manageTemplate": "Vorlage verwalten",
+        "cancel": "Abbrechen"
+      },
+      "mark": {
+        "recorded": "Aufgenommen",
+        "record": "Aufzeichnen"
+      },
+      "input": {
+        "organize": "Organisieren",
+        "chat": "Chatten",
+        "placeholder": {
+          "default": "Nachricht eingeben...",
+          "noApiKey": "Kein API-Schlüssel konfiguriert, KI-Chat nicht verfügbar...",
+          "on": "KI-Vorschläge eingeschaltet",
+          "off": "KI-Vorschläge ausgeschaltet",
+          "noPrimaryModel": "Kein Hauptmodell konfiguriert, KI-Chat nicht verfügbar..."
+        },
+        "translate": {
+          "tooltip": "Übersetzen",
+          "translating": "Übersetze...",
+          "showOriginal": "Original anzeigen",
+          "alreadyTranslated": "Übersetzt in"
+        },
+        "clipboardMonitor": {
+          "enable": "Zwischenablageüberwachung (eingeschaltet)",
+          "disable": "Zwischenablageüberwachung (ausgeschaltet)"
+        },
+        "send": "Senden",
+        "stop": "Stoppen",
+        "terminate": "Beenden",
+        "tagLink": {
+          "on": "Mit Tag verknüpft",
+          "off": "Nicht mit Tag verknüpft"
+        },
+        "modelSelect": {
+          "tooltip": "KI-Modell auswählen",
+          "placeholder": "KI-Modelle suchen"
+        },
+        "promptSelect": {
+          "tooltip": "Prompt auswählen",
+          "placeholder": "Prompts suchen"
+        },
+        "clearChat": "Konversation löschen",
+        "clearContext": {
+          "tooltip": "Kontext löschen"
+        },
+        "chatLanguage": {
+          "tooltip": "Chat-Sprache auswählen",
+          "placeholder": "Sprache suchen"
+        },
+        "rag": {
+          "notSupported": "Vektormodell wird nicht unterstützt",
+          "enabled": "Wissensdatenbanksuche (aktiviert)",
+          "disabled": "Wissensdatenbanksuche (deaktiviert)"
+        },
+        "modeSelect": {
+          "tooltip": "Eingabemodus auswählen",
+          "chat": "Chat-Modus",
+          "gen": "Organisationsmodus",
+          "translate": "Übersetzungsmodus"
+        }
+      },
+      "header": {
+        "configApiKey": "API-Schlüssel konfigurieren",
+        "clearChat": "Chat löschen",
+        "selectPrompt": "Prompt auswählen"
+      },
+      "clipboard": {
+        "image": {
+          "detected": "Bild in der Zwischenablage erkannt:",
+          "recording": "Aufnahme...",
+          "recorded": "Aufgenommen",
+          "record": "Aufzeichnen"
+        },
+        "text": {
+          "detected": "Text in der Zwischenablage erkannt:",
+          "recorded": "Aufgenommen",
+          "record": "Aufzeichnen"
+        }
+      },
+      "messageControl": {
+        "words": "Wörter",
+        "readAloud": "Vorlesen",
+        "playing": "Wiedergabe",
+        "loading": "Laden",
+        "stop": "Wiedergabe stoppen"
+      },
+      "preview": {
+        "close": "Schließen",
+        "copy": "Kopieren",
+        "copied": "Kopiert!"
+      },
+      "control": {
+        "edit": "Bearbeiten",
+        "save": "Speichern",
+        "cancel": "Abbrechen",
+        "delete": "Löschen",
+        "deleteConfirm": "Möchten Sie diese Nachricht wirklich löschen?"
+      }
+    },
+    "tag": {
+      "add": "Tag hinzufügen",
+      "edit": "Tag bearbeiten",
+      "delete": "Tag löschen",
+      "deleteConfirm": "Möchten Sie dieses Tag wirklich löschen?",
+      "placeholder": "Tag-Namen eingeben"
+    }
+  },
+  "search": {
+    "placeholder": "Notizen und Artikel suchen...",
+    "results": "{count} Suchergebnisse",
+    "noResults": "Keine Suchergebnisse",
+    "item": {
+      "record": "Aufzeichnung",
+      "article": "Artikel",
+      "matches": "{count} Treffer",
+      "scanType": "Scan"
+    }
+  },
+  "image": {
+    "root": "Bild-Repository",
+    "noData": {
+      "title": "Synchronisationsfunktion nicht aktiviert",
+      "desc": "Bitte gehen Sie zur Systemeinstellungsseite, um die Github-Synchronisation zu konfigurieren.",
+      "goToSettings": "Zu den Einstellungen",
+      "howToUse": "Wie benutzt man die Synchronisationsfunktion?"
+    }
+  },
+  "navigation": {
+    "chat": "Chat",
+    "record": "Aufzeichnung",
+    "write": "Schreiben",
+    "search": "Suchen",
+    "githubImageHosting": "Github-Bild-Hosting",
+    "login": "Anmelden",
+    "loading": "Laden",
+    "view": "Anzeigen",
+    "logout": "Abmelden",
+    "setting": "Einstellung"
+  },
+  "marks": {
+    "types": {
+      "screenshot": "Bildschirmaufnahme",
+      "text": "Text",
+      "image": "Bild"
+    }
+  },
+  "tags": {
+    "inspiration": "Inspiration"
+  },
+  "sync": {
+    "status": "Status des Synchronisations-Repositorys",
+    "imageRepo": "Bild-Repository",
+    "articleRepo": "Artikel-Repository"
+  },
+  "ai": {
+    "thinking": "Denken",
+    "error": {
+      "title": "KI-Fehler",
+      "noAddress": "Bitte setzen Sie zuerst die KI-Adresse"
+    }
+  },
+  "article": {
+    "file": {
+      "toolbar": {
+        "accessRepo": "Repository zugreifen",
+        "loadingSync": "Synchronisationsinformationen laden",
+        "configSync": "Synchronisation konfigurieren",
+        "newArticle": "Neuer Artikel",
+        "newFolder": "Neuer Ordner",
+        "refresh": "Aktualisieren",
+        "toggleFolders": "Ordner ein-/ausblenden",
+        "expandAll": "Alle erweitern",
+        "collapseAll": "Alle einklappen",
+        "sortByName": "Nach Name sortieren",
+        "sortByCreated": "Nach Erstellung sortieren",
+        "sortByModified": "Nach Änderung sortieren",
+        "sortAsc": "Aufsteigend sortieren",
+        "sortDesc": "Absteigend sortieren",
+        "sort": "Sortieren",
+        "processingVectors": "Vektordaten werden verarbeitet",
+        "calculateVectors": "Wissensdatenbank-Berechnung (vollständig)",
+        "enableVectorDb": "Vektordatenbank aktivieren"
+      },
+      "context": {
+        "viewDirectory": "Verzeichnis anzeigen",
+        "cut": "Ausschneiden",
+        "copy": "Kopieren",
+        "paste": "Einfügen",
+        "rename": "Umbenennen",
+        "deleteSyncFile": "Synchronisierte Datei löschen",
+        "deleteLocalFile": "Lokale Datei löschen",
+        "delete": "Löschen",
+        "confirmDelete": "Möchten Sie den Ordner \"{name}\" wirklich löschen? Dies löscht den Ordner und alle seine Inhalte.",
+        "deleteSuccess": "Erfolgreich gelöscht",
+        "deleteFailed": "Löschen fehlgeschlagen",
+        "newFile": "Neue Datei",
+        "newFolder": "Neuer Ordner",
+        "syncFolder": "Ordner synchronisieren",
+        "syncFolderDesc": "Alle Markdown-Dateien im aktuellen Ordner synchronisieren",
+        "syncFolderSuccess": "Ordner erfolgreich synchronisiert",
+        "syncFolderError": "Fehler bei der Ordnersynchronisation",
+        "syncFolderProgress": "Ordner wird synchronisiert...",
+        "deleteSyncFileSuccess": "Synchronisierte Datei erfolgreich gelöscht",
+        "deleteSyncFileError": "Fehler beim Löschen der synchronisierten Datei"
+      },
+      "error": {
+        "fileExists": "Dateiname existiert bereits"
+      },
+      "clipboard": {
+        "copied": "In die Zwischenablage kopiert",
+        "cut": "In die Zwischenablage ausgeschnitten",
+        "pasted": "Erfolgreich eingefügt",
+        "pasteFailed": "Einfügen fehlgeschlagen",
+        "empty": "Zwischenablage ist leer",
+        "confirmOverwrite": "Datei existiert bereits, möchten Sie sie überschreiben?",
+        "mark": {
+          "title": "Aufzeichnungen",
+          "tooltip": "Aufzeichnungen verwenden",
+          "description": "Aufzeichnungen in Inhalte umwandeln, um sie in den Artikel einzufügen.",
+          "noRecords": "Keine Aufzeichnungen",
+          "ocrNoContent": "OCR hat keinen Inhalt erkannt"
+        },
+        "question": {
+          "tooltip": "Fragen und Antworten",
+          "selectContent": "Bitte wählen Sie zuerst Inhalt aus",
+          "promptTemplate": "Referenztext: \n{content}\nBasierend auf der Frage: \n{question}\n, geben Sie direkt den Antwortinhalt an."
+        },
+        "continue": {
+          "tooltip": "Fortfahren",
+          "promptTemplate": "Basierend auf dem vorhergehenden Text: \n{content}\n schreiben Sie weiter und geben Sie Inhalte mit maximal 100 Wörtern zurück.\nSie können den folgenden Text referenzieren: \n{endContent}\n, vermeiden Sie jedoch, dessen Inhalt zu duplizieren."
+        },
+        "polish": {
+          "tooltip": "Polieren",
+          "selectContent": "Bitte wählen Sie zuerst Inhalt aus",
+          "promptTemplate": "Polieren Sie diesen Text: \n{content}\n, behalten Sie die Sprache bei, korrigieren Sie Tippfehler und grammatikalische Fehler, geben Sie direkt das polierte Ergebnis zurück."
+        },
+        "eraser": {
+          "tooltip": "Vereinfachen",
+          "selectContent": "Bitte wählen Sie zuerst Inhalt aus",
+          "promptTemplate": "Vereinfachen Sie diesen Text: \n{content}\n, dieser Text ist zu ausführlich, reduzieren Sie die Wortzahl um mindestens die Hälfte, behalten Sie die Sprache bei, geben Sie direkt das optimierte Ergebnis zurück."
+        },
+        "expansion": {
+          "tooltip": "Erweitern",
+          "selectContent": "Bitte wählen Sie zuerst Inhalt aus",
+          "promptTemplate": "Erweitern Sie diesen Text: \n{content}\n, dieser Text ist zu kurz, erhöhen Sie die Wortzahl um mindestens die Hälfte, behalten Sie die Sprache bei, geben Sie direkt das erweiterte Ergebnis zurück."
+        },
+        "translation": {
+          "tooltip": "Übersetzen",
+          "description": "Den ausgewählten Text übersetzen",
+          "selectContent": "Bitte wählen Sie zuerst Inhalt aus",
+          "promptTemplate": "Übersetzen Sie diesen Text: \n{content}\n, in {language}, geben Sie direkt das übersetzte Ergebnis zurück."
+        }
+      }
+    },
+    "editor": {
+      "copySuccess": "Kopieren erfolgreich",
+      "copySuccessDescription": "In die Zwischenablage kopiert",
+      "floatbar": {
+        "readAloud": {
+          "start": "Vorlesen",
+          "stop": "Lesen stoppen",
+          "loading": "Laden..."
+        }
+      },
+      "toolbar": {
+        "mark": {
+          "title": "Aufzeichnungen",
+          "tooltip": "Aufzeichnungen",
+          "description": "Aufzeichnungen in Inhalte umwandeln, um sie in den Artikel einzufügen.",
+          "noRecords": "Keine Aufzeichnungen",
+          "ocrNoContent": "OCR hat keinen Inhalt erkannt"
+        },
+        "question": {
+          "tooltip": "Fragen und Antworten",
+          "selectContent": "Bitte wählen Sie zuerst Inhalt aus",
+          "promptTemplate": "Referenztext: \n{content}\nBasierend auf der Frage: \n{question}\n, geben Sie direkt den Antwortinhalt an."
+        },
+        "continue": {
+          "tooltip": "Fortfahren",
+          "promptTemplate": "Basierend auf dem vorhergehenden Text: \n{content}\n schreiben Sie weiter und geben Sie Inhalte mit maximal 100 Wörtern zurück.\nSie können den folgenden Text referenzieren: \n{endContent}\n, vermeiden Sie jedoch, dessen Inhalt zu duplizieren."
+        },
+        "polish": {
+          "tooltip": "Polieren",
+          "selectContent": "Bitte wählen Sie zuerst Inhalt aus",
+          "promptTemplate": "Polieren Sie diesen Text: \n{content}\n, behalten Sie die Sprache bei, korrigieren Sie Tippfehler und grammatikalische Fehler, geben Sie direkt das polierte Ergebnis zurück."
+        },
+        "eraser": {
+          "tooltip": "Vereinfachen",
+          "selectContent": "Bitte wählen Sie zuerst Inhalt aus",
+          "promptTemplate": "Vereinfachen Sie diesen Text: \n{content}\n, dieser Text ist zu ausführlich, reduzieren Sie die Wortzahl um mindestens die Hälfte, behalten Sie die Sprache bei, geben Sie direkt das optimierte Ergebnis zurück."
+        },
+        "expansion": {
+          "tooltip": "Erweitern",
+          "selectContent": "Bitte wählen Sie zuerst Inhalt aus",
+          "promptTemplate": "Erweitern Sie diesen Text: \n{content}\n, dieser Text ist zu kurz, erhöhen Sie die Wortzahl um mindestens die Hälfte, behalten Sie die Sprache bei, geben Sie direkt das erweiterte Ergebnis zurück."
+        },
+        "translation": {
+          "tooltip": "Übersetzen",
+          "description": "Den ausgewählten Text übersetzen",
+          "selectContent": "Bitte wählen Sie zuerst Inhalt aus",
+          "promptTemplate": "Übersetzen Sie diesen Text: \n{content}\n, in {language}, geben Sie direkt das übersetzte Ergebnis zurück."
+        }
+      },
+      "upload": {
+        "error": "Hochladen fehlgeschlagen",
+        "needToken": "Zum Hochladen von Bildern muss ein Zugriffstoken konfiguriert werden",
+        "uploading": "Bild wird hochgeladen"
+      }
+    },
+    "footer": {
+      "wordCount": "Wörter",
+      "sync": {
+        "sync": "Synchronisieren",
+        "synced": "Synchronisiert",
+        "syncing": "Synchronisieren",
+        "syncFailed": "Synchronisation fehlgeschlagen",
+        "checkNetworkOrToken": "Bitte überprüfen Sie die Netzwerkverbindung oder den Token",
+        "quickSync": "Schnelle Synchronisation"
+      },
+      "history": {
+        "loadingHistory": "Verlauf laden",
+        "historyRecords": "Verlaufsaufzeichnungen",
+        "noHistory": "Kein Verlauf",
+        "loading": "Laden",
+        "recordsCount": "Aufzeichnungen",
+        "filterQuickSync": "Schnelle Synchronisationen filtern",
+        "committedAt": "Commited am",
+        "pull": "Pull",
+        "quickSync": "Schnelle Synchronisation"
+      }
+    }
+  }
+}

@@ -196,6 +196,8 @@
       }
     },
     "sync": {
+      "autoSyncTitle": "自动同步",
+      "autoSyncDesc": "启用自动同步以实现无缝更新。",
       "title": "同步配置",
       "desc": "在这里，你可以配置同步仓库，它可以帮助你同步记录、markdown 文件、系统配置等信息。",
       "repoStatus": "仓库状态",

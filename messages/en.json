@@ -188,9 +188,13 @@
       "noContentToOptimize": "Please enter prompt content first"
     },
     "sync": {
+      "autoSyncTitle": "Auto Sync",
+      "autoSyncDesc": "Enable automatic synchronization for seamless updates.",
       "title": "Sync",
       "desc": "Here, you can configure the synchronization repository, which can help you synchronize records, markdown files, system configurations and other information.",
       "repoStatus": "Repository Status",
+      "checking": "Checking...",
+      "creating": "Creating...",
       "syncRepo": "Sync Repository",
       "syncRepoDesc": "Sync markdown files in writing",
       "imageRepo": "Image Repository",
@@ -348,7 +352,21 @@
       "clearData": "Clear Data",
       "clearDataConfirm": "Are you sure to clear data?",
       "proxy": "Proxy, used to solve network problems, after configuration, it is recommended to restart the application.",
-      "proxyPlaceholder": "Enter proxy address"
+      "proxyPlaceholder": "Enter proxy address",
+      "importConfig": "Import Config",
+      "exportConfig": "Export Config",
+      "importSuccess": "Import success",
+      "importSuccessDesc": "Configuration downloaded successfully, please restart the application manually",
+      "importButton": "Import",
+      "exportButton": "Export",
+      "configImportExportDesc": "Import and export configuration only includes application settings, does not include records and notes.",
+      "dataClearedMessage": "Data cleared successfully",
+      "restartTitle": "Restart Required",
+      "filesCleared": "Files cleared successfully",
+      "clearDataDesc": "Clear persisted settings and database (including records).",
+      "clearDataButton": "Clear Data",
+      "clearFilesDesc": "Clear cached files (images, attachments, etc.) in the workspace 'assets' directory.",
+      "clearFilesButton": "Clear Files"
     },
     "ai": {
       "title": "Model Management",

@@ -8,6 +8,7 @@ import { getCurrentWindow } from '@tauri-apps/api/window';
 import { Store } from "@tauri-apps/plugin-store";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
+import { getLocalizedSetting, SettingKeys } from "@/lib/locales";
 import SetConfig from "./set-config";
 
 export function SettingDev({id, icon}: {id: string, icon?: React.ReactNode}) {
@@ -70,18 +71,18 @@ export function SettingDev({id, icon}: {id: string, icon?: React.ReactNode}) {
   }, [])
 
   return (
-    <SettingType id={id} icon={icon} title={t('settings.dev.title')}>
+    <SettingType id={id} icon={icon} title={getLocalizedSetting(SettingKeys.title, t)}>
       <SettingRow border className="gap-4 flex-col md:flex-row items-start md:items-center">
-        <span>{t('settings.dev.proxy')}</span>
-        <Input className="max-w-[400px]" placeholder={t('settings.dev.proxyPlaceholder')} value={proxy} onChange={proxyChangeHandler} />
+        <span>{getLocalizedSetting(SettingKeys.proxy, t)}</span>
+        <Input className="max-w-[400px]" placeholder={getLocalizedSetting(SettingKeys.proxyPlaceholder, t)} value={proxy} onChange={proxyChangeHandler} />
       </SettingRow>
       <SettingRow border className="gap-4 flex-col md:flex-row items-start md:items-center">
-        <span>{t('settings.dev.clearDataDesc') || 'Clear persisted settings and database (including records).'} </span>
-        <Button variant={"destructive"} onClick={handleClearData}>{t('settings.dev.clearDataButton') || 'Clear'}</Button>
+        <span>{getLocalizedSetting(SettingKeys.clearDataDesc, t) || 'Clear persisted settings and database (including records).'} </span>
+        <Button variant={"destructive"} onClick={handleClearData}>{getLocalizedSetting(SettingKeys.clearDataButton, t) || 'Clear'}</Button>
       </SettingRow>
       <SettingRow border className="gap-4 flex-col md:flex-row items-start md:items-center">
-        <span>{t('settings.dev.clearFilesDesc') || 'Clear persisted files, including images and articles.'}</span>
-        <Button variant={"destructive"} onClick={handleClearFile}>{t('settings.dev.clearFilesButton') || 'Clear'}</Button>
+        <span>{getLocalizedSetting(SettingKeys.clearFilesDesc, t) || 'Clear persisted files, including images and articles.'}</span>
+        <Button variant={"destructive"} onClick={handleClearFile}>{getLocalizedSetting(SettingKeys.clearFilesButton, t) || 'Clear'}</Button>
       </SettingRow>
       <SetConfig />
     </SettingType>
